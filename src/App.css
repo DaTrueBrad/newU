@@ -185,6 +185,18 @@ header img {
   font-size: 28px;
   color: #3C3C3C;
 }
+/* .ReactCollapse--content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+} */
+
+.collapse-container {
+  display: flex;
+  flex-direction: column;
+  align-items: ;
+}
 
 .day-of-week-container {
   display: flex;
