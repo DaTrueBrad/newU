@@ -1,38 +1,123 @@
+html {
+  font-family: "Roboto";
+}
+
 .App {
-  text-align: center;
+  padding: 20px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+img {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  width: 100%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.button-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+  margin-top: 12px;
+  margin-bottom: 13px;
+  border: 2px solid #FFA620;
+  background-color: transparent;
+  height: 48px;
+  width: 150px;
+  font-size: 24px;
+  border-radius: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  text-align: center;
+  font-family: "Roboto";
+  font-weight: 200;
+  font-size: 48px;
+  color: #3C3C3C;
+}
+
+.input-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  width: 200px;
+  /* height: 24px; */
+  font-size: 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+header {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header i {
+  font-size: 50px;
+  color: #3C3C3C;
+}
+
+header img {
+  height: 80px;
+  width: 80px;
+  padding: 0;
+}
+
+#hidden {
+  visibility: hidden;
+}
+
+.ReactCollapse--collapse {
+  transition: all 0.3s ease-in-out;
+}
+
+.week-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  background-color: #FFA620;
+  border: 2px solid #3C3C3C;
+  border-radius: 5px;
+  height: 50px;
+}
+
+.week-container i {
+  font-size: 30px;
+  padding: 0px 10px;
+  color: #3C3C3C;
+}
+
+.week-container h2 {
+  font-size: 28px;
+  color: #3C3C3C;
+}
+
+.day-of-week-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  font-size: 24px;
+  border: 1px solid #3C3C3C;
+  border-radius: 5px;
+  margin: 5px 0px;
+  padding: 3px 0px;
+}
+
+.day-of-week-container i {
+  font-size: 30px;
+  padding: 0px 10px;
+  color: #3C3C3C;
+}
+.day-of-week-container h3 {
+  font-size: 24px;
+  font-family: "roboto";
+  color: #3C3C3C;
 }
