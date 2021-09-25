@@ -24,12 +24,16 @@ button {
   margin-top: 12px;
   margin-bottom: 13px;
   border: 2px solid #FFA620;
-  background-color: transparent;
+  background-color: white;
   height: 48px;
   width: 150px;
   font-size: 24px;
   border-radius: 5px;
   color: #3C3C3C;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 h1 {

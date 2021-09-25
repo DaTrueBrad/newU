@@ -13,6 +13,12 @@ function Week(props) {
     }
   }
 
+  function rotate() {
+    if(isActive) {
+      return 'bx-rotate-90'
+    } 
+  }
+
   function setVisability(e) {
     setActive(!isActive)
     console.log(isActive)

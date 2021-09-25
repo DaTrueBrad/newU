@@ -5,7 +5,7 @@ function Login() {
     <div className="input-container">
         <input type="text" placeholder="Username"/>
         <input type="password" placeholder="Password"/>
-        <button>Login</button>
+        <a href="/workout/build"><button>Login</button></a>
       </div>
   )
 }

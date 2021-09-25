@@ -18,6 +18,7 @@ function Header() {
           <NavLink to='/workout/build' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Build Workout</NavLink>
           <NavLink to='/workout/articles' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Articles</NavLink>
           <NavLink to='/workout/profile/user' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Profile</NavLink>
+          <NavLink to='/' onClick={menuClick}>Log Out</NavLink>
       </nav>
       </header>
     </div>
