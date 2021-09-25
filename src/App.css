@@ -179,23 +179,21 @@ header img {
   font-size: 30px;
   padding: 0px 10px;
   color: #3C3C3C;
+  transform: rotate(-90);
+}
+
+#rotate {
+  transform: rotate(-90);
 }
 
 .week-container h2 {
   font-size: 28px;
   color: #3C3C3C;
 }
-/* .ReactCollapse--content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: 100%;
-} */
 
 .collapse-container {
   display: flex;
   flex-direction: column;
-  align-items: ;
 }
 
 .day-of-week-container {

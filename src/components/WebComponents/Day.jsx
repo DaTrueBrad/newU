@@ -5,6 +5,14 @@ function Day(props) {
   const [isActive, setActive] = useState(false);
   const daysArr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
+  function ArrowDirection() {
+    if(isActive) {
+      return <i class='bx bxs-down-arrow' ></i>
+    } else {
+      return <i class='bx bxs-right-arrow'></i>
+    }
+  }
+
   function setVisability(e) {
     setActive(!isActive)
     console.log(isActive)
@@ -13,7 +21,7 @@ function Day(props) {
   return (
     <div>
       <section className="day-of-week-container" onClick={setVisability}>
-        <i class='bx bxs-right-arrow' ></i>
+        <ArrowDirection />
         <h3>{props.element}</h3>
       </section>
       <Collapse isOpened={isActive}>
