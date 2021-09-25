@@ -16,6 +16,10 @@ img {
   align-items: center;
 }
 
+main {
+  margin-top: 100px;
+}
+
 button {
   margin-top: 12px;
   margin-bottom: 13px;
@@ -25,6 +29,7 @@ button {
   width: 150px;
   font-size: 24px;
   border-radius: 5px;
+  color: #3C3C3C;
 }
 
 h1 {
@@ -57,11 +62,74 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 500;
+}
+header i {
+  position:inherit;
+  top: 2%;
+  left: 85%;
+  font-size: 48px;
+  color: #DBD3AD;
+  z-index: 100;
+}
+
+.workout-input-container {
+  position: fixed;
+  display: flex;
+  top: 27%;
+  left: 0;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+  height: 75vh;
+  width: 100%;
+  background: white;
+  padding-top: 0px;
+  z-index: 5;
+}
+
+#hidden {
+  position: fixed;
+  top: -500%;
+  left: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.nav-menu {
+  transition: all 0.5s ease;
+  background-color: #3C3C3C;
+  padding-top: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 80;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #FFA620;
+  padding: 5px;
+  font-size: 28px;
+  margin-top: 15px;
+  border-radius: 5px;
+  z-index: 120;
 }
 
 header i {
   font-size: 50px;
   color: #3C3C3C;
+  transition: all 0.5s ease;
 }
 
 header img {
@@ -70,12 +138,30 @@ header img {
   padding: 0;
 }
 
-#hidden {
-  visibility: hidden;
-}
+
 
 .ReactCollapse--collapse {
   transition: all 0.3s ease-in-out;
+}
+
+
+
+#page-title {
+  z-index: 100;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.workout-input-container h2 {
+  margin: 0;
+  padding-top: 0px;
+}
+.workout-input-container p {
+  margin: 5px 0 10px 0;
 }
 
 .week-container {
@@ -120,4 +206,110 @@ header img {
   font-size: 24px;
   font-family: "roboto";
   color: #3C3C3C;
+}
+
+.daily-exercise-container {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  justify-content: space-between;
+}
+
+.exercise-input {
+  font-size: 15px;
+  width: 130px;
+}
+
+.short-input {
+  font-size: 15px;
+  width: 50px;
+}
+
+.disclaimer-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #3C3C3C;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+.disclaimer-container h2 {
+  background-color: #3C3C3C;
+  color: #FFA620;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px solid #3C3C3C;
+}
+
+.article-card {
+  height: 400px;
+  width: 100%;
+  border: 2px solid #3C3C3C;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.article-card h2 {
+  margin-top: 0;
+  padding: 2px;
+  color: #3C3C3C;
+  text-align: center;
+  background-color: #FFA620;
+  border-bottom: 2px solid #3C3C3C;
+}
+
+.article-card a {
+  /* text-decoration: none; */
+  color: #FFA620;
+}
+
+.save-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.save-container i {
+  font-size: 28px;
+  color: #FFA620;
+  padding: 5px;
+}
+
+.profile-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-container i {
+  font-size: 50vw;
+  color: #FFA620;
+}
+.user-selection-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.user-selection-container a {
+  text-align: center;
+  width: 33%;
+  font-size: 24px;
+  text-decoration: none;
+  color: #3C3C3C;
+  padding: 5px 0;
+  border-radius: 5px;
+}
+
+table {
+  width: 100%;
+  border: 1px solid #3C3C3C;
+  padding: 0;
+  margin: 15px 0;
+}
+table td {
+  text-align: center;
 }

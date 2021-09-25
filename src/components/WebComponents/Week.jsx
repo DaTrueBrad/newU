@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import DaysOfWeek from './DaysOfWeek'
 import {Collapse} from "react-collapse"
 
 function Week(props) {
@@ -10,6 +9,13 @@ function Week(props) {
     console.log(isActive)
   }
 
+  function turnVis(e) {
+    let collapseValue = e.target.nextElementSibling.isOpened
+    if(collapseValue) {
+      collapseValue = !collapseValue
+    }
+  }
+
   return (
     <div>
       <div className="week-container" onClick={setVisability}>
@@ -18,14 +24,21 @@ function Week(props) {
       </div>
       <Collapse isOpened={isActive}>
       <div>
-        <section className="day-of-week-container">
+        <section className="day-of-week-container" onClick={(e) => turnVis(e)}>
           <i class='bx bxs-right-arrow' ></i>
           <h3>Monday</h3>
         </section>
           <Collapse isOpened={true}>
-            <section>
-              <input type="text" />
+            <div className="input-container">
+              <section className="daily-exercise-container">
+              <input type="text" placeholder="Exercise Name" className='exercise-input'/>
+              <input type="text" placeholder="Sets" className='short-input'/>
+              <input type="text" placeholder="Reps" className='short-input'/>
+              <input type="text" placeholder="Weight" className='short-input'/>
             </section>
+            <button>Add</button>
+            </div>
+            
           </Collapse>
         <section className="day-of-week-container">
           <i class='bx bxs-right-arrow' ></i>
