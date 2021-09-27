@@ -103,7 +103,9 @@ header i {
   top: -500%;
   left: 0;
   transition: all 0.5s ease-in-out;
+  display: ;
 }
+
 
 .nav-menu {
   transition: all 0.5s ease;
@@ -189,7 +191,9 @@ header img {
 #rotate {
   transform: rotate(-90);
 }
-
+form {
+  margin-bottom: 30px;
+}
 .week-container h2 {
   font-size: 28px;
   color: #3C3C3C;

@@ -13,8 +13,9 @@ function Header() {
     <div>
       <header>
         <img src="../../logo.png" alt="" />
-        <i class='bx bx-menu' onClick={() => menuClick()} style={{color: `${isActive ? "" : "#FFA620"}`}}></i>
+        <i className='bx bx-menu' onClick={() => menuClick()} style={{color: `${isActive ? "" : "#FFA620"}`}}></i>
         <nav className="nav-menu" id={`${isActive ? "hidden" : ""}`}>
+          <NavLink to='/workout/current' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Current Program</NavLink>
           <NavLink to='/workout/build' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Build Workout</NavLink>
           <NavLink to='/workout/articles' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Articles</NavLink>
           <NavLink to='/workout/profile/user' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Profile</NavLink>

@@ -8,17 +8,17 @@ function BuildWorkout() {
 
   
 
-  function RenderWeeks() {
+  function RenderWeeks(props) {
     
-
+    // console.log("Page BuildWorkouts:", props.json)
     //! If the below lines ever stop working, just make it read this: const fields: JSX.Element[] = [];
     const fields = [];
     if(days > 24) {
       for(let i = 1; i <= 24; i++) {
-        fields.push(<Week id={i} key={i} weekNum={i} />)
+        fields.push(<Week id={i} key={i} weekNum={i}/>)
       }
     } else if (!days) {
-      fields.push(<Week id={1} key={1} weekNum={1} />)
+      fields.push(<Week id={1} key={1} weekNum={1}/>)
     }
      else {
       for(let i = 1; i <= days; i++) {
@@ -42,8 +42,48 @@ function BuildWorkout() {
     RenderWeeks()
     setActive(!isActive)
   }
-
+  //TODO Find a better way to store the data (it can be in a table if it needs to) so that it is in json format, organized as such:
+  // globalstate = {
+  //   name: 'thing',
+  //   Workout: {
+  //     week1: {
+  //       monday: {
+  //         1: {
+  //           exercise: "squat",
+  //           sets: 3,
+  //           reps: 10,
+  //           weight: 225
+  //         },
+  //         2: {
+  //           exercise: "leg Extensions",
+  //           sets: 3,
+  //           reps: 15,
+  //           weight: 180
+  //         }
+  //       },
+  //       tuesday: {
+  //         1: {
+  //           exercise: "squat",
+  //           sets: 3,
+  //           reps: 10,
+  //           weight: 225
+  //         },
+  //         2: {
+  //           exercise: "leg Extensions",
+  //           sets: 3,
+  //           reps: 15,
+  //           weight: 180
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
   
+  
+  
+  let workout = {
+    name: 'test workout',
+  }
   
   return (
     <div>
@@ -58,7 +98,10 @@ function BuildWorkout() {
         <button onClick={buttonClick}>Create</button>
       </div>
       <div id="week-container">
-        <RenderWeeks />
+        <form action="">
+          <RenderWeeks json={workout}/>
+          <button onclick={console.log('saved workout')}>Save Workout</button>
+        </form>
       </div>
     </div>
       
