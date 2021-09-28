@@ -7,7 +7,7 @@ require("dotenv").config();
 const { DataTypes } = require("sequelize"); // Import the built-in data types
 
 
-const port = process.env.PORT;
+const { PORT } = process.env;
 app.use(express.json());
 app.use(cors());
 
@@ -69,10 +69,11 @@ app.get("/getcommand", async (req, res) => {
 app.get("/article", async (req, res) => {
   try {
     const article = await Articles.findAll();
+    console.log(article)
     res.status(200).send(article);
   } catch {
     console.log("bad juju");
   }
 });
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
