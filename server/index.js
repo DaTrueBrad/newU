@@ -3,14 +3,14 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 const { Sequelize, INTEGER, where } = require("sequelize");
-require("dotenv").config();
 const { DataTypes } = require("sequelize"); // Import the built-in data types
-
-
+require("dotenv").config();
 const { PORT } = process.env;
+
+
 app.use(express.json());
 app.use(cors());
-
+app.use(express.static(path.resolve(__dirname, "../build")));
 // const sequelize = new Sequelize(`${process.env.string}`)
 
 const sequelize = new Sequelize(
@@ -74,6 +74,10 @@ app.get("/article", async (req, res) => {
   } catch {
     console.log("bad juju");
   }
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../build", "index.html"));
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
