@@ -6,6 +6,11 @@ import { useFormik } from "formik";
 function Day(props) {
   const [isActive, setActive] = useState(false);
   const [dataArr, setDataArr] = useState([])
+  const [exerciseInput, setExerciseInput] = useState('')
+  const [setsInput, setSetsInput] = useState(0)
+  const [repsInput, setRepInput] = useState(0)
+  const [weightInput, setWeightInput] = useState(0)
+  console.log(dataArr.length)
   
   
   const formik = useFormik({
@@ -15,23 +20,73 @@ function Day(props) {
       reps: 0,
       weight: 0,
     },
-    onSubmit: (values) => {
-      setDataArr([...dataArr, values])
-      console.log("Form Data:", values);
-      console.log("state content:", dataArr)
-      props.onChange(dataArr)
+    onSubmit: async (values) => {
+      let object = {
+        [props.element]: [dataArr]
+      }
+
+      if(dataArr.length === 1) {
+        await setDataArr([values])
+        props.onChange(object)
+      } else {
+        await setDataArr([...dataArr, values])
+        props.onChange(object)
+      }
+      // setDataArr([...dataArr, values])
+      // console.log("Form Data:", values);
+      // console.log("state content:", dataArr)
+      // console.log("New Object I made:", object)
+      // try {
+      //   props.onChange(object)
+      // } catch (e) {
+      //   console.error(e)
+      // }
     }
   });
+  let i = 0
+  const submitHandler = async () => {
+    let object = {
+      [i]: {
+        exercise: exerciseInput,
+        sets: setsInput,
+        reps: repsInput,
+        weight: weightInput,
+      }
+    }
+    //TODO I need to find a way to wait for the dataArr to fully become "set" before it send off to the parent
+    if(dataArr.length === 0) {
+      // console.log('dataArr has very few people')
+      let bodyObj = {
+        [props.element]: [dataArr]
+      }
+      setDataArr([object])
+      try {
+        console.log('First If Statement:', dataArr)
+      } catch(err) {
+        console.error(err)
+      }
+      finally {
+        await props.onChange(bodyObj)
+      } 
+    } else {
+      setDataArr([...dataArr, object])
+      console.log('Else Statement:', dataArr)
+      let bodyObj = {
+        [props.element]: [dataArr]
+      }
+      await props.onChange(bodyObj)
+    }
+  }
 
   function DisplayInfo() {
     let arr = []
     for(let i = 0; i < dataArr.length; i++) {
       arr.push(
       <tr>
-        <td>{dataArr[i].exercise}</td>
-        <td>{dataArr[i].sets}</td>
-        <td>{dataArr[i].reps}</td>
-        <td>{dataArr[i].weight}</td>
+        <td>{dataArr[i][0].exercise}</td>
+        <td>{dataArr[i][0].sets}</td>
+        <td>{dataArr[i][0].reps}</td>
+        <td>{dataArr[i][0].weight}</td>
       </tr>)
     }
     return arr
@@ -50,8 +105,21 @@ function Day(props) {
     console.log(isActive)
   }
 
+  function inputChange(e) {
+    if(e.target.name === 'exercise') {
+      setExerciseInput(e.target.value)
+    } else if(e.target.name === 'sets') {
+      setSetsInput(e.target.value)
+    } else if(e.target.name === 'reps') {
+      setRepInput(e.target.value)
+    } else {
+      setWeightInput(e.target.value)
+    }
+    console.log('new change function works')
+  }
+
   return (
-    <div>
+    <div id='annoying-container'>
       <section className="day-of-week-container" onClick={setVisability}>
         <ArrowDirection />
         <h3>{props.element}</h3>
@@ -68,38 +136,33 @@ function Day(props) {
         </table>
         <div className="input-container">
           <section className="daily-exercise-container">
-            <form onSubmit={formik.handleSubmit}>
+            <div className="input-workout-container">
               <input
                 type="text"
                 name="exercise"
-                onChange={formik.handleChange}
-                value={formik.values.exercise}
+                onChange={inputChange}
                 placeholder="Exercise Name"
                 className='exercise-input'/>
               <input
                 type="number"
                 name="sets"
-                onChange={formik.handleChange}
-                value={formik.values.sets}
+                onChange={inputChange}
                 placeholder="Sets" 
                 className='short-input'/>
               <input
                 type="number"
                 name="reps"
-                onChange={formik.handleChange}
-                value={formik.values.reps}
+                onChange={inputChange}
                 placeholder="Reps"
                 className='short-input'/>
               <input
                 type="number"
                 name="weight"
-                onChange={formik.handleChange}
-                value={formik.values.weight}
+                onChange={inputChange}
                 placeholder="Weight"
                 className='short-input'/>
-                <button type='submit'>Add</button>
-            </form>
-            
+            </div>
+                <button onClick={submitHandler}>Add</button>
           </section>
           
         </div>

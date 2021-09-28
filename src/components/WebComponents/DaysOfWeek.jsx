@@ -11,21 +11,27 @@ function DaysOfWeek(props) {
     console.log(isActive)
   }
 
-  const WeekNum = weeknum
   let newData = []
   let object = {
-    WeekNum: {
+    [weeknum]: {
       newData
     }
   }
   console.log(object)
 
-  
 
   const eventhandler = async (data) => {
-    newData = [...newData, data[0]]
-    
-    console.log('object', object)
+    // newData = [...newData, data[0]]
+    // console.log('we are in the parent with:', data)
+
+    if(newData.length === 0) {
+      newData = [data]
+      console.log('Parent if:', newData)
+    } else {
+      newData = [...newData, data]
+      console.log("Parent else:", newData)
+    }
+    // console.log('object', object)
   }
 
   let newerArr = []

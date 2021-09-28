@@ -98,10 +98,10 @@ function BuildWorkout() {
         <button onClick={buttonClick}>Create</button>
       </div>
       <div id="week-container">
-        <form action="">
-          <RenderWeeks json={workout}/>
-          <button onclick={console.log('saved workout')}>Save Workout</button>
-        </form>
+        {/* <form action=""> */}
+        <RenderWeeks json={workout}/>
+          <button onClick={() => console.log('saved workout')} id='save-btn'>Save</button>
+        {/* </form> */}
       </div>
     </div>
       
