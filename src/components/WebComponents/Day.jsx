@@ -10,39 +10,7 @@ function Day(props) {
   const [setsInput, setSetsInput] = useState(0)
   const [repsInput, setRepInput] = useState(0)
   const [weightInput, setWeightInput] = useState(0)
-  console.log(dataArr.length)
   
-  
-  const formik = useFormik({
-    initialValues: {
-      exercise: "",
-      sets: 0,
-      reps: 0,
-      weight: 0,
-    },
-    onSubmit: async (values) => {
-      let object = {
-        [props.element]: [dataArr]
-      }
-
-      if(dataArr.length === 1) {
-        await setDataArr([values])
-        props.onChange(object)
-      } else {
-        await setDataArr([...dataArr, values])
-        props.onChange(object)
-      }
-      // setDataArr([...dataArr, values])
-      // console.log("Form Data:", values);
-      // console.log("state content:", dataArr)
-      // console.log("New Object I made:", object)
-      // try {
-      //   props.onChange(object)
-      // } catch (e) {
-      //   console.error(e)
-      // }
-    }
-  });
   let i = 0
   const submitHandler = async () => {
     let object = {
@@ -61,7 +29,6 @@ function Day(props) {
       }
       setDataArr([object])
       try {
-        console.log('First If Statement:', dataArr)
       } catch(err) {
         console.error(err)
       }
@@ -70,7 +37,6 @@ function Day(props) {
       } 
     } else {
       setDataArr([...dataArr, object])
-      console.log('Else Statement:', dataArr)
       let bodyObj = {
         [props.element]: [dataArr]
       }
@@ -102,7 +68,6 @@ function Day(props) {
 
   function setVisability(e) {
     setActive(!isActive)
-    console.log(isActive)
   }
 
   function inputChange(e) {
@@ -115,7 +80,6 @@ function Day(props) {
     } else {
       setWeightInput(e.target.value)
     }
-    console.log('new change function works')
   }
 
   return (

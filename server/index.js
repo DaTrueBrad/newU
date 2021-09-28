@@ -6,6 +6,7 @@ const { Sequelize, INTEGER, where } = require("sequelize");
 require("dotenv").config();
 const { DataTypes } = require("sequelize"); // Import the built-in data types
 
+
 const port = process.env.PORT;
 app.use(express.json());
 app.use(cors());
@@ -65,7 +66,7 @@ app.get("/getcommand", async (req, res) => {
   }
 });
 
-app.get("/api/article", async (req, res) => {
+app.get("/article", async (req, res) => {
   try {
     const article = await Articles.findAll();
     res.status(200).send(article);

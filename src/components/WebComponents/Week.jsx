@@ -4,7 +4,6 @@ import DaysOfWeek from './DaysOfWeek'
 
 function Week(props) {
   const [isActive, setActive] = useState(false);
-  console.log(props.json)
   function ArrowDirection() {
     if(isActive) {
       return <i class='bx bxs-down-arrow' ></i>
@@ -13,21 +12,8 @@ function Week(props) {
     }
   }
 
-  function rotate() {
-    if(isActive) {
-      return 'bx-rotate-90'
-    } 
-  }
-
   function setVisability(e) {
     setActive(!isActive)
-  }
-
-  function turnVis(e) {
-    let collapseValue = e.target.nextElementSibling.isOpened
-    if(collapseValue) {
-      collapseValue = !collapseValue
-    }
   }
 
   return (
