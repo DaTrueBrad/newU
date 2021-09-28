@@ -6,18 +6,18 @@ const { Sequelize, INTEGER, where } = require("sequelize");
 require("dotenv").config();
 const { DataTypes } = require("sequelize"); // Import the built-in data types
 
-const port = process.env.PORT || 4050;
+const port = process.env.PORT;
 app.use(express.json());
 app.use(cors());
 
 // const sequelize = new Sequelize(`${process.env.string}`)
 
 const sequelize = new Sequelize(
-  "d8m5fr13vr66f8",
-  "mkwtdyzjvwpjgd",
-  "c66180b754f31dc205746ffba7b3a449e015c90c653a2bf0db2721c5c8e93183",
+  process.env.DATABASE,
+  process.env.USER,
+  process.env.PASSWORD,
   {
-    host: "ec2-54-145-110-118.compute-1.amazonaws.com",
+    host: process.env.HOST,
     dialect: "postgres",
     dialectOptions: {
       ssl: {
