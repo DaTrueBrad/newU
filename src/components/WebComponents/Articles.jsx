@@ -8,7 +8,7 @@ function Articles() {
   const [data, setdata] = useState()
 
   const getData = async () => {
-    let res = await axios.get("/article")
+    let res = await axios.get("/api/article")
     console.log('response is:', res)
     setdata(res.data)
     }

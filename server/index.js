@@ -65,7 +65,7 @@ app.get("/getcommand", async (req, res) => {
   }
 });
 
-app.get("/article", async (req, res) => {
+app.get("/api/article", async (req, res) => {
   try {
     const article = await Articles.findAll();
     res.status(200).send(article);
