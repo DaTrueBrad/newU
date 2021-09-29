@@ -5,6 +5,7 @@ import BuildWorkout from './BuildWorkout'
 import Header from './Header'
 import Current from './Current'
 import Profile from './profileComponents/Profile'
+import Favorites from './Favorites'
 
 function Content() {
   return (
@@ -23,6 +24,9 @@ function Content() {
         </Route>
         <Route path='/workout/current'>
           <Current />
+        </Route>
+        <Route path='/workout/favorites'>
+          <Favorites />
         </Route>
       </Switch>
       </main>

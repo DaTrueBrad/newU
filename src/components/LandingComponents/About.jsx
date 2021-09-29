@@ -2,9 +2,32 @@ import React from 'react'
 
 function About() {
   return (
-    <div>
+    <div id='about-section'>
       <h1 id='about-text'>About Us</h1>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores quisquam corporis modi eveniet repellat nam itaque qui quae harum deserunt esse, ipsam odio alias, quasi asperiores provident tempora. Esse dicta omnis atque eaque dolorum voluptatibus harum quia expedita magnam, numquam aut eos dolore iure corporis. Dolore, praesentium? Ad debitis at odit excepturi nisi earum laborum aut laboriosam, maxime aperiam sequi. Ipsam, ea consequuntur nemo eius reprehenderit animi magnam quo molestias ipsum repellendus dignissimos eligendi, nihil ab. Asperiores et in suscipit tempore, doloremque dignissimos aut quas temporibus ipsam. Itaque a quo recusandae illum in debitis totam quibusdam distinctio eos libero ea beatae eligendi doloribus impedit laboriosam, deserunt cum accusantium asperiores corporis repellat dolore maxime veniam et id. Iure eos ipsa vero amet quibusdam provident distinctio similique ea! Officiis dolore doloremque earum? Temporibus repudiandae quibusdam quaerat soluta officia nulla ratione quidem autem, exercitationem explicabo dicta ex consectetur alias porro. Qui voluptatibus, deleniti fugiat quam soluta minus obcaecati eligendi? Illum in aspernatur asperiores odit nemo sequi praesentium repudiandae eos, ipsa quaerat reprehenderit, officiis ex perspiciatis quam. Maxime aliquid id similique temporibus fuga voluptatum, fugiat facilis aperiam itaque, atque, praesentium est ratione suscipit? Nesciunt suscipit alias, nobis amet maxime eaque. Reprehenderit et odit, dolores labore totam fugit quia, eveniet repudiandae praesentium laudantium exercitationem magni dolore quae, quisquam laboriosam sint quas. Deleniti commodi velit est quidem doloremque, sint unde minima eum labore neque architecto, cupiditate vitae illum dolorem ut cum iusto laborum, quaerat nobis explicabo blanditiis! Quidem ipsum esse quia modi dignissimos sed itaque cumque.</p>
+      <h2>Welcome to New U!</h2>
+      <p>New U is an all-in-one workout planner and knowledge hub. Here you will be able to create and store workout programs so you can better track your progress and actually see results!</p>
+      <div className="image-text-container">
+        <img src="./build-workout.png" alt="" />
+        <div className="image-text">
+          <p>This site was created with our users in mind! Most companies will build their "backend" and everything the company needs first, and then think about the user. We are different.</p>
+          <p>New U was first created to be user-friendly and intuitive, with no complicated features or gimmiks. And with full-control over your own program, how can you not see the best results money can buy!</p>
+                <h3>Start Free, Pay Later!</h3>
+      <p>With New U, we understand that gettign started is often the hardest part of you journey. This is why we give you 2 months to  use our platform, absolutely free! We care about you, so you will get 100% unlimited access until you get into the habit of working on your goals.</p>
+
+        </div>
+      </div>
+      
+      <div className="image-text-container">
+        <img src="./articles.png" alt="" />
+        <div className="image-text">
+          <h3>Never be Lost Again</h3>
+      <p>Part of the journey is knowing how to get there. And with so much information on the internet, just how can you sort through it all in your free time and find what truly works?? Well, fret no more. We have gathered the best articles across the globe and provided links to them in our articles section, which is curated by a panel of highly acknowledged fitness professionals.</p>
+      
+      <p>Find exactly what you need, when you need it. Don't worry about losing your articles, either. With our favorites feature, you can save an article for later, either because you just liked it so much, or because there is a lot of info in the article, and you want to reference it later when you have more time.</p>
+      <p>So what are you waiting for? Sign up and start on your goals for free, today!</p>
+        </div>
+      </div>
+      
     </div>
   )
 }
