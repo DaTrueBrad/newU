@@ -433,6 +433,12 @@
     display: flex;
     justify-content: center;
   }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   img {
     padding-top: 60px;
     padding-bottom: 40px;
