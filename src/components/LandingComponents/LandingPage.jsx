@@ -18,7 +18,7 @@ const onSubmit = (values) => {
       username: values.username,
       password: values.password
     }
-    axios.post('http://localhost:5432/users', bodyObj)
+    axios.post('/users', bodyObj)
     .then((res) => console.log(res)) //We get the new user back to the front
   } else {
     console.log('cannot submit, msut match')
