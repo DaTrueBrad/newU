@@ -1,7 +1,6 @@
 {
   "name": "new-u",
   "version": "0.1.0",
-  "proxy": "http://localhost:5432",
   "main": "server/index.js",
   "private": true,
   "dependencies": {
