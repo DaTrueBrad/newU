@@ -8,7 +8,7 @@ import Profile from './profileComponents/Profile'
 
 function Content() {
   return (
-    <div>
+    <div id='content'>
       <Header />
       <main>
       <Switch>

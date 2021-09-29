@@ -86,23 +86,24 @@ function BuildWorkout() {
   }
   
   return (
-    <div>
+    <div id='build-workout-page'>
       <h1 id='page-title'>Build Program</h1>
-      <div className="button-container">
-      <button style={{alignSelf: "center"}} onClick={buttonClick}>Change #</button>
+      <div className="button-container" style={{alignSelf: "center"}}>
+      <button style={{alignSelf: "center"}} onClick={buttonClick}>Restart</button>
       </div>
-      <div className="workout-input-container" id={`${isActive ? "" : "hidden"}`}>
+      <div className="workout-input-container" id={`${isActive ? "" : "hide-workout"}`}>
         <h2>How many weeks?</h2>
         <p>(Max of 24 weeks)</p>
         <input type="number" min='1' max='24' onChange={(e) => daysHandler(e.target.value)}/>
         <button onClick={buttonClick}>Create</button>
       </div>
-      <div id="week-container">
+        <div id="week-container">
         {/* <form action=""> */}
         <RenderWeeks json={workout}/>
           <button onClick={() => console.log('saved workout')} id='save-btn'>Save</button>
         {/* </form> */}
       </div>
+      
     </div>
       
     

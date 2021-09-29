@@ -7,7 +7,7 @@ function Articles() {
   const [data, setdata] = useState()
 
   const getData = async () => {
-    let res = await axios.get("/article")
+    let res = await axios.get("http://localhost:5432/article")
     console.log('response is:', res)
     setdata(res.data)
     }
@@ -26,15 +26,19 @@ function Articles() {
         return (
           <div key={index} element={el} className='article-card'>
             <h2>{el.title}</h2>
-            <p>Website: <a href={el.url} target='_blank'>{el.url}</a></p>
-            <p>Author: <a href="">{el.author}</a></p>
-            <p>Description: {el.description}</p>
-            <div className="button-container">
+            <div className="article-content">
+              <div className="article-description">
+                <p>Website: <a href={el.url} target='_blank'>{el.url}</a></p>
+                <p>Author: <a href="">{el.author}</a></p>
+                <p>Description: {el.description}</p>
+              </div>
+            <div className="article-button-container">
               <div className="save-container">
                 <p>Save</p>
                 <i class='bx bx-bookmark'></i>
               </div>
               <a href={el.url} target='_blank'><button>View</button></a>
+            </div>
             </div>
           </div>
         )
@@ -52,7 +56,7 @@ function Articles() {
         <h2>*Disclaimer</h2>
         <p>New U did not write MANY of these articles. All rights and privilages are due to the author and their respective publishing site</p>
       </div>
-      <div><Display /></div>
+      <div id='article-container'><Display /></div>
     </div>
   )
 }
