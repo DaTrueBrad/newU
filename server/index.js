@@ -15,8 +15,8 @@ app.use(express.static(path.resolve(__dirname, "../build")));
 app.get("/article", ctrl.getArticles);
 app.post('/users', ctrl.newUser)
 app.post('/login', ctrl.login)
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../build", "index.html"));
++app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 connect.connect()
