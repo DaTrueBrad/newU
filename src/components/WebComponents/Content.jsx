@@ -7,35 +7,41 @@ import Current from './Current'
 import Profile from './profileComponents/Profile'
 import Favorites from './Favorites'
 
-function Content({isLoggedIn}) {
-  //  if (isLoggedIn) {
+function Content(props) {
+   if (props.status) {
     return (
       <div id='content'>
-        <Header />
+        <Header isLoggedIn={props.isLoggedIn}/>
         <main>
         <Switch>
-          <Route path='/workout/build'>
+          <Route path='/dashboard/build'>
             <BuildWorkout />
           </Route>
-          <Route path='/workout/articles'>
+          <Route path='/dashboard/articles'>
             <Articles />
           </Route>
-          <Route path='/workout/profile'>
+          <Route path='/dashboard/profile'>
             <Profile />
           </Route>
-          <Route path='/workout/current'>
+          <Route path='/dashboard/current'>
             <Current />
           </Route>
-          <Route path='/workout/favorites'>
+          <Route path='/dashboard/favorites'>
             <Favorites />
           </Route>
         </Switch>
         </main>
       </div>
     )
-  //  } else {
-  //    <Redirect to='/' />
-  //  }
+   } else {
+     return (
+       <div className="not-logged-in">
+         <h1>You are not logged in.</h1>
+         <h2>Please click here to return to home page</h2>
+         <a href="/"><button>Return</button></a>
+       </div>
+     )
+   }
 }
 
 export default Content

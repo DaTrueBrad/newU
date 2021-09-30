@@ -2,11 +2,15 @@ import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
 
 
-function Header() {
+function Header(props) {
   const [isActive, setActive] = useState("false");
 
   function menuClick() {
     setActive(!isActive)
+  }
+
+  function logout() {
+    props.isLoggedIn()
   }
 
   return (
@@ -20,7 +24,7 @@ function Header() {
           <NavLink to='/workout/articles' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Articles</NavLink>
           <NavLink to='/workout/favorites' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Favorites</NavLink>
           <NavLink to='/workout/profile/user' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Profile</NavLink>
-          <NavLink to='/' onClick={menuClick}>Log Out</NavLink>
+          <NavLink to='/' onClick={menuClick, logout}>Log Out</NavLink>
       </nav>
       </header>
     </div>

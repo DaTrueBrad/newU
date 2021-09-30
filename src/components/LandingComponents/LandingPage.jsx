@@ -33,7 +33,7 @@ const validate = (values) => {
   }
 }
 
-function LandingPage() {
+function LandingPage(props) {
   const [signUp, setSignUp] = useState(false);
   const [login, setLogin] = useState(false)
   const [username, setusername] = useState('')
@@ -71,8 +71,7 @@ function LandingPage() {
     console.log(bodyObj)
     return axios.post('/login', bodyObj)
     .then((res) => {
-      console.log(res);
-      <Redirect to="/workout/build" />
+      props.isLoggedIn()
     })
   }
   return (

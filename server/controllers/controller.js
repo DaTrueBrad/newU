@@ -43,7 +43,8 @@ module.exports = {
     if (validUser) {
       console.log('valid user is:',validUser);
       if (bcrypt.compareSync(password, validUser.dataValues.password)) {
-        return res.status(200).send('redirect');
+        return res.status(200).send('success')
+        return;
       } else {
         return res.status(200).send("Password Incorrect");
       }
