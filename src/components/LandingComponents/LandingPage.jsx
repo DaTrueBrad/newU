@@ -73,9 +73,9 @@ function LandingPage() {
     .then((res) => {
       console.log(res)
       if(res.data === 'redirect'){
-        <Route exact path='/'>
+        
           <Redirect to="/workout/build" />
-        </Route>
+        
       } else {
         alert('not valid')
       }
