@@ -2,6 +2,7 @@ const {Sequelize} = require('sequelize')
 require("dotenv").config();
 const {DATABASE, HOST, USER, PASSWORD} = process.env
 
+
 const connection = new Sequelize(
   DATABASE,
   USER,
