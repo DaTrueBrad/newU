@@ -38,6 +38,7 @@ function LandingPage() {
   const [login, setLogin] = useState(false)
   const [username, setusername] = useState('')
   const [password, setpassword] = useState('')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   
   function showSignup(e) {
     setSignUp(!signUp)

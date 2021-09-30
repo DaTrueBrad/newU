@@ -1,14 +1,17 @@
 import React, {useState, useEffect} from 'react'
-import { Route, Switch } from 'react-router';
+import { Route, Switch, PrivateRoute } from 'react-router';
 import './App.css';
 import LandingPage from './components/LandingComponents/LandingPage';
 import Content from './components/WebComponents/Content';
 
-const Context = React.createContext()
+const Context = React.createContext(false)
 
 
 function App() {
   const [loading, setLoading] = useState(true);
+  <Context.Provider value="false">
+
+  </Context.Provider>
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000)
@@ -18,9 +21,9 @@ function App() {
     <div className="App">
       {/* <Spinner loading={loading}/> */}
       <Switch>
-        <Route path="/workout">
+        <PrivateRoute path="/workout">
           <Content />
-        </Route>
+        </PrivateRoute>
         <Route path="/">
           <LandingPage />
         </Route>

@@ -15,7 +15,8 @@ app.use(express.static(path.resolve(__dirname, "../build")));
 app.get("/article", ctrl.getArticles);
 app.post('/users', ctrl.newUser)
 app.post('/login', ctrl.login)
-//!not sure if i need this line of code
+
+//! this is a catch-all for the build environment
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
