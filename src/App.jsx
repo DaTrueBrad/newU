@@ -4,7 +4,7 @@ import './App.css';
 import LandingPage from './components/LandingComponents/LandingPage';
 import Content from './components/WebComponents/Content';
 
-const Context = React.createContext(false)
+const Context = React.createContext(true)
 
 
 function App() {
