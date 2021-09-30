@@ -16,9 +16,9 @@ app.get("/article", ctrl.getArticles);
 app.post('/users', ctrl.newUser)
 app.post('/login', ctrl.login)
 //!not sure if i need this line of code
-// app.get('/*', function (req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 connect.connect()
 //connection to port
