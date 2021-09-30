@@ -71,14 +71,8 @@ function LandingPage() {
     console.log(bodyObj)
     return axios.post('/login', bodyObj)
     .then((res) => {
-      console.log(res)
-      if(res.data === 'redirect'){
-        
-          <Redirect to="/workout/build" />
-        
-      } else {
-        alert('not valid')
-      }
+      console.log(res);
+      <Redirect to="/workout/build" />
     })
   }
   return (
