@@ -7,7 +7,7 @@ const connection = new Sequelize(
   USER,
   PASSWORD,
   {
-    host: "ec2-54-145-110-118.compute-1.amazonaws.com",
+    host: HOST,
     dialect: "postgres",
     dialectOptions: {
       ssl: {

@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import { Route, Switch } from 'react-router';
 import './App.css';
 import LandingPage from './components/LandingComponents/LandingPage';
-import Spinner from './components/Spinner';
 import Content from './components/WebComponents/Content';
 
 const Context = React.createContext()
