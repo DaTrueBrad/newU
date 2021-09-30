@@ -69,7 +69,7 @@ function LandingPage() {
       password: password,
     };
     console.log(bodyObj)
-    return axios.post('http://localhost:5432/login', bodyObj)
+    return axios.post('/login', bodyObj)
     .then((res) => {
       console.log(res)
       if(res.data === 'redirect'){
