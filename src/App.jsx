@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Route, Switch, PrivateRoute } from 'react-router';
+import { Route, Switch } from 'react-router';
 import './App.css';
 import LandingPage from './components/LandingComponents/LandingPage';
 import Content from './components/WebComponents/Content';
@@ -9,6 +9,8 @@ const Context = React.createContext(false)
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
   <Context.Provider value="false">
 
   </Context.Provider>
@@ -21,11 +23,11 @@ function App() {
     <div className="App">
       {/* <Spinner loading={loading}/> */}
       <Switch>
-        <PrivateRoute path="/workout">
-          <Content />
-        </PrivateRoute>
+        <Route path="/workout">
+          <Content isLoggedIn={isLoggedIn}/>
+        </Route>
         <Route path="/">
-          <LandingPage />
+          <LandingPage  isLoggedIn={isLoggedIn}/>
         </Route>
       </Switch>
     </div>
