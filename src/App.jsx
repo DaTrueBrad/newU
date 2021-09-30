@@ -11,10 +11,6 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  <Context.Provider value="false">
-
-  </Context.Provider>
-
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000)
   }, [])
