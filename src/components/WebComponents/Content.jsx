@@ -8,7 +8,7 @@ import Profile from './profileComponents/Profile'
 import Favorites from './Favorites'
 
 function Content({isLoggedIn}) {
-   if (isLoggedIn) {
+  //  if (isLoggedIn) {
     return (
       <div id='content'>
         <Header />
@@ -33,9 +33,9 @@ function Content({isLoggedIn}) {
         </main>
       </div>
     )
-   } else {
-     <Redirect to='/' />
-   }
+  //  } else {
+  //    <Redirect to='/' />
+  //  }
 }
 
 export default Content

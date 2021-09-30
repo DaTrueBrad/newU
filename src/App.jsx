@@ -4,12 +4,10 @@ import './App.css';
 import LandingPage from './components/LandingComponents/LandingPage';
 import Content from './components/WebComponents/Content';
 
-const Context = React.createContext(true)
-
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000)
