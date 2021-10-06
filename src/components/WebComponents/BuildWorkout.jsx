@@ -57,7 +57,7 @@ function BuildWorkout() {
       data: newData
     }
     console.log('this is what we build:', workout)
-    axios.post('http://localhost:5432/workouts', workout)
+    axios.post('/workouts', workout)
     .then((res) => console.log(res.data))
   }
   
