@@ -1,28 +1,36 @@
+import axios from 'axios'
 import React, {useState} from 'react'
 import Week from './Week'
 
 function BuildWorkout() {
   const [userInput, setUserInput] = useState(0)
   const [days, setDays] = useState(1)
+  const [globalVar, setGlobalVar] = useState(1)
   const [isActive, setActive] = useState("false");
 
+  let newData = {}
+  const eventHandler = (data) => {
+    console.log('Top Component:', data)
+    newData[`${data.name}`] = data
+  }
   
 
   function RenderWeeks(props) {
-    
-    // console.log("Page BuildWorkouts:", props.json)
     //! If the below lines ever stop working, just make it read this: const fields: JSX.Element[] = [];
     const fields = [];
     if(days > 24) {
       for(let i = 1; i <= 24; i++) {
-        fields.push(<Week id={i} key={i} weekNum={i}/>)
+        setGlobalVar(24)
+        fields.push(<Week id={i} key={i} weekNum={i} onChange={eventHandler}/>)
       }
     } else if (!days) {
-      fields.push(<Week id={1} key={1} weekNum={1}/>)
+      setGlobalVar(1)
+      fields.push(<Week id={1} key={1} weekNum={1} onChange={eventHandler}/>)
     }
      else {
+       setGlobalVar(days)
       for(let i = 1; i <= days; i++) {
-        fields.push(<Week id={i} key={i} weekNum={i} />)
+        fields.push(<Week id={i} key={i} weekNum={i} onChange={eventHandler}/>)
       }
     }
       
@@ -41,53 +49,22 @@ function BuildWorkout() {
     setDays(userInput)
     RenderWeeks()
     setActive(!isActive)
-  }
-  //TODO Find a better way to store the data (it can be in a table if it needs to) so that it is in json format, organized as such:
-  // globalstate = {
-  //   name: 'thing',
-  //   Workout: {
-  //     week1: {
-  //       monday: {
-  //         1: {
-  //           exercise: "squat",
-  //           sets: 3,
-  //           reps: 10,
-  //           weight: 225
-  //         },
-  //         2: {
-  //           exercise: "leg Extensions",
-  //           sets: 3,
-  //           reps: 15,
-  //           weight: 180
-  //         }
-  //       },
-  //       tuesday: {
-  //         1: {
-  //           exercise: "squat",
-  //           sets: 3,
-  //           reps: 10,
-  //           weight: 225
-  //         },
-  //         2: {
-  //           exercise: "leg Extensions",
-  //           sets: 3,
-  //           reps: 15,
-  //           weight: 180
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+  } 
   
-  
-  
-  let workout = {
-    name: 'test workout',
+  function saveWorkout() {
+    let workout = {
+      name: "Cool Workout",
+      data: newData
+    }
+    console.log('this is what we build:', workout)
+    axios.post('http://localhost:5432/workouts', workout)
+    .then((res) => console.log(res.data))
   }
   
   return (
     <div id='build-workout-page'>
       <h1 id='page-title'>Build Program</h1>
+      <p>Be warned, this page does NOT save your data if you navigate away from it during a build. Please have an idea of what program you want to design, then come here and build it.</p>
       <div className="button-container" style={{alignSelf: "center"}}>
       <button style={{alignSelf: "center"}} onClick={buttonClick}>Restart</button>
       </div>
@@ -99,8 +76,8 @@ function BuildWorkout() {
       </div>
         <div id="week-container">
         {/* <form action=""> */}
-        <RenderWeeks json={workout}/>
-          <button onClick={() => console.log('saved workout')} id='save-btn'>Save</button>
+        <RenderWeeks />
+          <button onClick={saveWorkout} id='save-btn'>Save</button>
         {/* </form> */}
       </div>
       

@@ -15,6 +15,8 @@ app.use(express.static(path.resolve(__dirname, "../build")));
 app.get("/article", ctrl.getArticles);
 app.post('/users', ctrl.newUser)
 app.post('/login', ctrl.login)
+app.post('/workouts', ctrl.postWorkout)
+app.get('/workouts', ctrl.getCurrent)
 
 //! this is a catch-all for the build environment
 app.get('/*', function (req, res) {

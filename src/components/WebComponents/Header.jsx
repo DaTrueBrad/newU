@@ -10,6 +10,7 @@ function Header(props) {
   }
 
   function logout() {
+    localStorage.removeItem('user')
     props.isLoggedIn()
   }
 

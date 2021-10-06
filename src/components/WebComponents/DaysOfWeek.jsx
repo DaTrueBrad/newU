@@ -5,28 +5,14 @@ function DaysOfWeek(props) {
   const {weeknum} = props
   const [isActive, setActive] = useState(false);
   const [levelTwo, setLevelTwo] = useState([{}])
+  const [dataArr, setDataArr] = useState([])
 
-  function setVisability(e) {
-    setActive(!isActive)
-  }
+  const setVisability = (e) => setActive(!isActive)
 
-  let newData = []
-  let object = {
-    [weeknum]: {
-      newData
-    }
-  }
-
-
-  const eventhandler = async (data) => {
-    // newData = [...newData, data[0]]
-    // console.log('we are in the parent with:', data)
-
-    if(newData.length === 0) {
-      newData = [data]
-    } else {
-      newData = [...newData, data]
-    }
+  const eventhandler = (data) => {
+    console.log('days week Data:', data)
+    
+    props.onChange(data)
   }
 
   let newerArr = []
@@ -34,7 +20,7 @@ function DaysOfWeek(props) {
   function CreateDays() {
     const daysArr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     let days = daysArr.map((element, index) => {
-      return <Day element={element} index={index} onChange={eventhandler}/>
+      return <Day element={element} index={index} onChange={eventhandler} weeknum={props.weekNum}/>
     })
     return days
   }

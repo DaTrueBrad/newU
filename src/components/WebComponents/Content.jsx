@@ -6,6 +6,7 @@ import Header from './Header'
 import Current from './Current'
 import Profile from './profileComponents/Profile'
 import Favorites from './Favorites'
+import NewBuild from './NewBuild'
 
 function Content(props) {
    if (props.status) {

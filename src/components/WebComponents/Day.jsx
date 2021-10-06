@@ -5,43 +5,43 @@ import { useFormik } from "formik";
 
 function Day(props) {
   const [isActive, setActive] = useState(false);
-  const [dataArr, setDataArr] = useState([])
+  const [dataArr, setDataArr] = useState({})
+  const [hideBtn, setHideBtn] = useState(false)
   const [exerciseInput, setExerciseInput] = useState('')
   const [setsInput, setSetsInput] = useState(0)
   const [repsInput, setRepInput] = useState(0)
   const [weightInput, setWeightInput] = useState(0)
-  
-  let i = 0
-  const submitHandler = async () => {
+  const [number, setNumber] = useState(1)
+
+  // let data = {}
+
+  //TODO we need to stop the constant re render, it is preventing us from properly passing infomraiton when the input fields change. Possibly section it all off into more components as need be.
+
+  const addHandler = () => {
     let object = {
-      [i]: {
+      // [number]: {
         exercise: exerciseInput,
         sets: setsInput,
         reps: repsInput,
         weight: weightInput,
-      }
+      // },
     }
-    //TODO I need to find a way to wait for the dataArr to fully become "set" before it send off to the parent
-    if(dataArr.length === 0) {
-      // console.log('dataArr has very few people')
-      let bodyObj = {
-        [props.element]: [dataArr]
-      }
-      setDataArr([object])
-      try {
-      } catch(err) {
-        console.error(err)
-      }
-      finally {
-        await props.onChange(bodyObj)
-      } 
-    } else {
-      setDataArr([...dataArr, object])
-      let bodyObj = {
-        [props.element]: [dataArr]
-      }
-      await props.onChange(bodyObj)
+    //TODO need to understand how to insert a new value pair under teh exercise category with 1 being exercise one, 2 for exercise two, etc.
+      setDataArr({...dataArr, exercise: {[number]: object}})
+      setNumber((number + 1))
+      console.log('New Attempt:', dataArr)
+      
+  }
+
+  
+  const submitHandler = () => {
+    let object = {
+      name: props.element,
+      exercises: dataArr
     }
+    console.log('New test, before we send up:', object)
+    setHideBtn(!hideBtn)
+    props.onChange(object)
   }
 
   function DisplayInfo() {
@@ -49,29 +49,20 @@ function Day(props) {
     for(let i = 0; i < dataArr.length; i++) {
       arr.push(
       <tr>
-        <td>{dataArr[i][0].exercise}</td>
-        <td>{dataArr[i][0].sets}</td>
-        <td>{dataArr[i][0].reps}</td>
-        <td>{dataArr[i][0].weight}</td>
+        <td>{dataArr[i].exercise}</td>
+        <td>{dataArr[i].sets}</td>
+        <td>{dataArr[i].reps}</td>
+        <td>{dataArr[i].weight}</td>
       </tr>)
     }
     return arr
   }
 
-  function ArrowDirection() {
-    if(isActive) {
-      return <i class='bx bxs-down-arrow' ></i>
-    } else {
-      return <i class='bx bxs-right-arrow'></i>
-    }
-  }
-
-  function setVisability(e) {
-    setActive(!isActive)
-  }
+  const ArrowDirection = () => isActive ? <i class='bx bxs-down-arrow' ></i> : <i class='bx bxs-right-arrow'></i>
+  const setVisability = (e) => setActive(!isActive)
 
   function inputChange(e) {
-    if(e.target.name === 'exercise') {
+    if(e.target.name.includes('exercise')) {
       setExerciseInput(e.target.value)
     } else if(e.target.name === 'sets') {
       setSetsInput(e.target.value)
@@ -103,7 +94,7 @@ function Day(props) {
             <div className="input-workout-container">
               <input
                 type="text"
-                name="exercise"
+                name={`${props.element} exercise #${number}`}
                 onChange={inputChange}
                 placeholder="Exercise Name"
                 className='exercise-input'/>
@@ -126,7 +117,11 @@ function Day(props) {
                 placeholder="Weight"
                 className='short-input'/>
             </div>
-                <button onClick={submitHandler}>Add</button>
+            <div className={hideBtn ? "invisible" : "button-container-flex"}>
+                <button onClick={addHandler}>Add</button>
+                <button onClick={submitHandler}>Save</button>
+
+            </div>
           </section>
           
         </div>

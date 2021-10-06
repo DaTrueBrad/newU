@@ -2,6 +2,7 @@ const Article = require('../models/articles')
 const Users = require('../models/users')
 const bcrypt = require("bcrypt");
 const { Redirect } = require('react-router');
+const Workouts = require('../models/workouts')
 
 module.exports = {
   getArticles: async (req, res) => {
@@ -43,13 +44,26 @@ module.exports = {
     if (validUser) {
       console.log('valid user is:',validUser);
       if (bcrypt.compareSync(password, validUser.dataValues.password)) {
-        return res.status(200).send('success')
-        return;
+        return res.status(200).send(validUser.dataValues.username)
       } else {
         return res.status(200).send("Password Incorrect");
       }
     } else {
       return res.status(200).send("Username not found. Please check your spelling.");
     }
+  },
+  postWorkout: async (req, res) => {
+    // console.log(req.body)
+    console.log(typeof JSON.stringify(req.body))
+    await Workouts.create({
+      name: req.body.name,
+      data: JSON.stringify(req.body.data)
+    })
+    return res.status(200).send(`${req.body.name} successfully Saved!`)
+  },
+  getCurrent: async (req, res) => {
+    const workout = await Workouts.findOne({ where: { id: 3}})
+
+    res.status(200).send(workout)
   }
 }

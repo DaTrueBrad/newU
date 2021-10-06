@@ -17,6 +17,13 @@ function App() {
   function setStatus() {
     setIsLoggedIn(!isLoggedIn)
   }
+  useEffect(() => {
+    if(localStorage.getItem('user')) {
+      console.log('user found')
+      setIsLoggedIn(true)
+    }
+  }, [])
+  
 
   return (
     <div className="App">

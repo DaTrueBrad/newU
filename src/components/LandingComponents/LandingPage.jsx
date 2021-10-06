@@ -19,7 +19,7 @@ const onSubmit = (values) => {
       password: values.password
     }
     axios.post('/users', bodyObj)
-    .then((res) => console.log(res)) //We get the new user back to the front
+    .then((res) => alert("Success! Please log in.")) //We get the new user back to the front
   } else {
     console.log('cannot submit, msut match')
   }
@@ -71,6 +71,7 @@ function LandingPage(props) {
     console.log(bodyObj)
     return axios.post('/login', bodyObj)
     .then((res) => {
+      localStorage.setItem('user', JSON.stringify(res.data))
       props.isLoggedIn()
     })
   }
