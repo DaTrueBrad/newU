@@ -16,6 +16,9 @@ const Workouts = connection.define(
     },
     data: {
       type: DataTypes.STRING(100000),
+    },
+    created_by: {
+      type: DataTypes.INTEGER
     }
   },
   {

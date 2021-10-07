@@ -24,6 +24,7 @@ function Header(props) {
           <NavLink to='/dashboard/current' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Current Program</NavLink>
           <NavLink to='/dashboard/build' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Build Workout</NavLink>
           <NavLink to='/dashboard/articles' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Articles</NavLink>
+          <NavLink to='/dashboard/programs/custom' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Programs</NavLink>
           <NavLink to='/dashboard/favorites' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Favorites</NavLink>
           <NavLink to='/dashboard/profile/user' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Profile</NavLink>
           <NavLink to='/' onClick={logout}>Log Out</NavLink>

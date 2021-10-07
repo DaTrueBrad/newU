@@ -9,7 +9,7 @@ const connect = require('./database/db')
 // Middleware
 app.use(express.json());
 app.use(cors());
-// app.use(express.static(path.resolve(__dirname, "../build")));
+app.use(express.static(path.resolve(__dirname, "../build")));
 
 // Endpoints
 app.get("/article", ctrl.getArticles);
@@ -17,11 +17,12 @@ app.post('/users', ctrl.newUser)
 app.post('/login', ctrl.login)
 app.post('/workouts', ctrl.postWorkout)
 app.get('/workouts', ctrl.getCurrent)
+app.get('/myworkouts', ctrl.getMyWorkouts)
 
 //! this is a catch-all for the build environment
-// app.get('/*', function (req, res) {
-//   res.sendFile(path.join(__dirname, '../build', 'index.html'));
-// });
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
+});
 
 connect.connect()
 //connection to port

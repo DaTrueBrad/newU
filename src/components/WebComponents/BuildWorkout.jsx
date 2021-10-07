@@ -52,9 +52,11 @@ function BuildWorkout() {
   } 
   
   function saveWorkout() {
+     let id = +localStorage.getItem('user')
     let workout = {
       name: "Cool Workout",
-      data: newData
+      data: newData,
+      id: id
     }
     console.log('this is what we build:', workout)
     axios.post('/workouts', workout)

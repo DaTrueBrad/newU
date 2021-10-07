@@ -44,7 +44,7 @@ module.exports = {
     if (validUser) {
       console.log('valid user is:',validUser);
       if (bcrypt.compareSync(password, validUser.dataValues.password)) {
-        return res.status(200).send(validUser.dataValues.username)
+        return res.status(200).send((validUser.dataValues.id).toString())
       } else {
         return res.status(200).send("Password Incorrect");
       }
@@ -57,7 +57,8 @@ module.exports = {
     console.log(typeof JSON.stringify(req.body))
     await Workouts.create({
       name: req.body.name,
-      data: JSON.stringify(req.body.data)
+      data: JSON.stringify(req.body.data),
+      created_by: req.body.id
     })
     return res.status(200).send(`${req.body.name} successfully Saved!`)
   },
@@ -65,5 +66,10 @@ module.exports = {
     const workout = await Workouts.findOne({ where: { id: 8}})
     console.log('server side')
     res.status(200).send(workout)
+  },
+  getMyWorkouts: async (req, res) => {
+    console.log(req.query)
+    const workouts = await Workouts.findAll({where: {created_by: req.query.id} })
+    res.status(200).send(workouts)
   }
 }

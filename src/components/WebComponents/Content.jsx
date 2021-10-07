@@ -6,6 +6,7 @@ import Header from './Header'
 import Current from './Current'
 import Profile from './profileComponents/Profile'
 import Favorites from './Favorites'
+import Programs from './programComponents/Programs'
 
 function Content(props) {
    if (props.status) {
@@ -19,6 +20,9 @@ function Content(props) {
           </Route>
           <Route path='/dashboard/articles'>
             <Articles />
+          </Route>
+          <Route path='/dashboard/programs'>
+            <Programs />
           </Route>
           <Route path='/dashboard/profile'>
             <Profile />

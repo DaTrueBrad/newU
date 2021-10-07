@@ -13,7 +13,6 @@ function App() {
   }
   useEffect(() => {
     if(localStorage.getItem('user')) {
-      console.log('user found')
       setIsLoggedIn(true)
     }
   }, [])

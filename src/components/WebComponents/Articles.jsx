@@ -8,7 +8,6 @@ function Articles() {
 
   const getData = async () => {
     let res = await axios.get("/article")
-    console.log('response is:', res)
     setdata(res.data)
     }
 
@@ -22,7 +21,6 @@ function Articles() {
       return <Spinner />
     } else {
       const articleCards = data.map((el, index) => {
-        console.log(el)
         return (
           <div key={index} element={el} className='article-card'>
             <h2>{el.title}</h2>
@@ -43,7 +41,6 @@ function Articles() {
           </div>
         )
       })
-      console.log("article cards:", articleCards)
       return articleCards
     }
   }
