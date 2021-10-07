@@ -10,6 +10,7 @@ function Header(props) {
   }
 
   function logout() {
+    setActive(!isActive)
     localStorage.removeItem('user')
     props.isLoggedIn()
   }
@@ -25,7 +26,7 @@ function Header(props) {
           <NavLink to='/dashboard/articles' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Articles</NavLink>
           <NavLink to='/dashboard/favorites' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Favorites</NavLink>
           <NavLink to='/dashboard/profile/user' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}} onClick={menuClick}>Profile</NavLink>
-          <NavLink to='/' onClick={menuClick, logout}>Log Out</NavLink>
+          <NavLink to='/' onClick={logout}>Log Out</NavLink>
       </nav>
       </header>
     </div>

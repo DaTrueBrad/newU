@@ -1,12 +1,11 @@
 import React from 'react'
-import { Redirect, Route, Switch } from 'react-router'
+import { Route, Switch } from 'react-router'
 import Articles from './Articles'
 import BuildWorkout from './BuildWorkout'
 import Header from './Header'
 import Current from './Current'
 import Profile from './profileComponents/Profile'
 import Favorites from './Favorites'
-import NewBuild from './NewBuild'
 
 function Content(props) {
    if (props.status) {

@@ -5,7 +5,7 @@ import Week from './Week'
 function BuildWorkout() {
   const [userInput, setUserInput] = useState(0)
   const [days, setDays] = useState(1)
-  const [globalVar, setGlobalVar] = useState(1)
+  // const [globalVar, setGlobalVar] = useState(1)
   const [isActive, setActive] = useState("false");
 
   let newData = {}
@@ -20,15 +20,15 @@ function BuildWorkout() {
     const fields = [];
     if(days > 24) {
       for(let i = 1; i <= 24; i++) {
-        setGlobalVar(24)
+        // setGlobalVar(24)
         fields.push(<Week id={i} key={i} weekNum={i} onChange={eventHandler}/>)
       }
     } else if (!days) {
-      setGlobalVar(1)
+      // setGlobalVar(1)
       fields.push(<Week id={1} key={1} weekNum={1} onChange={eventHandler}/>)
     }
      else {
-       setGlobalVar(days)
+      //  setGlobalVar(days)
       for(let i = 1; i <= days; i++) {
         fields.push(<Week id={i} key={i} weekNum={i} onChange={eventHandler}/>)
       }

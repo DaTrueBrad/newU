@@ -4,12 +4,12 @@ import DaysOfWeek from './DaysOfWeek'
 
 function Week(props) {
   const [isActive, setActive] = useState(false);
-  const [dataArr, setDataArr] = useState([])
+  // const [dataArr, setDataArr] = useState([])
   function ArrowDirection() {
     if(isActive) {
-      return <i class='bx bxs-down-arrow' ></i>
+      return <i className='bx bxs-down-arrow' ></i>
     } else {
-      return <i class='bx bxs-right-arrow'></i>
+      return <i className='bx bxs-right-arrow'></i>
     }
   }
   let newData = {}
@@ -17,7 +17,7 @@ function Week(props) {
 
   function eventHandler(data) {
     console.log('week data:', data)
-    newData[`${data.name}`] = data
+    newData[`${data.name}`] = data.exercises
     // newData.push(data)
     console.log('new format:', newData)
   }

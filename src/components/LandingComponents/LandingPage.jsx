@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useFormik } from 'formik'
 import React, {useState} from 'react'
 import { Collapse } from 'react-collapse'
-import { Route, Switch, Redirect } from 'react-router'
+import { Route, Switch } from 'react-router'
 import About from './About'
 
 // Formik registration functions

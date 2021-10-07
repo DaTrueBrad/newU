@@ -28,8 +28,8 @@ function Articles() {
             <h2>{el.title}</h2>
             <div className="article-content">
               <div className="article-description">
-                <p>Website: <a href={el.url} target='_blank'>{el.url}</a></p>
-                <p>Author: <a href="">{el.author}</a></p>
+                <p>Website: <a href={el.url} target='_blank' rel="noreferrer">{el.url}</a></p>
+                <p>Author: {el.author}</p>
                 <p>Description: {el.description}</p>
               </div>
             <div className="article-button-container">
@@ -37,7 +37,7 @@ function Articles() {
                 <p>Save</p>
                 <i class='bx bx-bookmark'></i>
               </div>
-              <a href={el.url} target='_blank'><button>View</button></a>
+              <a href={el.url} target='_blank' rel="noreferrer"><button>View</button></a>
             </div>
             </div>
           </div>

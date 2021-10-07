@@ -2,6 +2,7 @@
   "name": "new-u",
   "version": "0.1.0",
   "main": "./server/index.js",
+  "proxy": "http://localhost:5432",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.4.1",
@@ -30,7 +31,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "node ./server/index.js && npm build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

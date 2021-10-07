@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import { Collapse } from 'react-collapse'
-import { useFormik } from "formik";
+// import { useFormik } from "formik";
 
 
 function Day(props) {
   const [isActive, setActive] = useState(false);
-  const [dataArr, setDataArr] = useState({})
+  const [dataArr] = useState({})
   const [hideBtn, setHideBtn] = useState(false)
   const [exerciseInput, setExerciseInput] = useState('')
   const [setsInput, setSetsInput] = useState(0)
@@ -13,32 +13,27 @@ function Day(props) {
   const [weightInput, setWeightInput] = useState(0)
   const [number, setNumber] = useState(1)
 
-  // let data = {}
-
-  //TODO we need to stop the constant re render, it is preventing us from properly passing infomraiton when the input fields change. Possibly section it all off into more components as need be.
-
   const addHandler = () => {
     let object = {
-      // [number]: {
         exercise: exerciseInput,
         sets: setsInput,
         reps: repsInput,
         weight: weightInput,
-      // },
     }
-    //TODO need to understand how to insert a new value pair under teh exercise category with 1 being exercise one, 2 for exercise two, etc.
-      setDataArr({...dataArr, exercise: {[number]: object}})
+      dataArr[number] = object
       setNumber((number + 1))
       console.log('New Attempt:', dataArr)
-      
   }
-
   
   const submitHandler = () => {
     let object = {
-      name: props.element,
+      name: props.key,
       exercises: dataArr
     }
+
+    // let object = {
+    //   [props.index]: dataArr
+    // }
     console.log('New test, before we send up:', object)
     setHideBtn(!hideBtn)
     props.onChange(object)
@@ -58,7 +53,7 @@ function Day(props) {
     return arr
   }
 
-  const ArrowDirection = () => isActive ? <i class='bx bxs-down-arrow' ></i> : <i class='bx bxs-right-arrow'></i>
+  const ArrowDirection = () => isActive ? <i className='bx bxs-down-arrow' ></i> : <i className='bx bxs-right-arrow'></i>
   const setVisability = (e) => setActive(!isActive)
 
   function inputChange(e) {
@@ -81,13 +76,16 @@ function Day(props) {
       </section>
       <Collapse isOpened={isActive}>
         <table>
-          <tr>
-            <td>Exercise</td>
-            <td>Sets</td>
-            <td>Reps</td>
-            <td>Weight</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>Exercise</td>
+              <td>Sets</td>
+              <td>Reps</td>
+              <td>Weight</td>
+            </tr>
           <DisplayInfo />
+          </tbody>
+          
         </table>
         <div className="input-container">
           <section className="daily-exercise-container">

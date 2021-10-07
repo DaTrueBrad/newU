@@ -62,8 +62,8 @@ module.exports = {
     return res.status(200).send(`${req.body.name} successfully Saved!`)
   },
   getCurrent: async (req, res) => {
-    const workout = await Workouts.findOne({ where: { id: 3}})
-
+    const workout = await Workouts.findOne({ where: { id: 8}})
+    console.log('server side')
     res.status(200).send(workout)
   }
 }
