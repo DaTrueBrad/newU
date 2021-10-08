@@ -26,8 +26,9 @@ function Day(props) {
   }
   
   const submitHandler = () => {
+    console.log(props.index)
     let object = {
-      name: props.key,
+      name: props.number,
       exercises: dataArr
     }
 
@@ -40,8 +41,11 @@ function Day(props) {
   }
 
   function DisplayInfo() {
+    // console.log(dataArr[1])
+    
     let arr = []
-    for(let i = 0; i < dataArr.length; i++) {
+    for(let i = 1; i <= Object.keys(dataArr).length; i++) {
+      console.log(dataArr[i])
       arr.push(
       <tr>
         <td>{dataArr[i].exercise}</td>
@@ -50,7 +54,11 @@ function Day(props) {
         <td>{dataArr[i].weight}</td>
       </tr>)
     }
-    return arr
+
+    const exercises = arr.map((element, index) => {
+      return (element)
+    })
+    return exercises
   }
 
   const ArrowDirection = () => isActive ? <i className='bx bxs-down-arrow' ></i> : <i className='bx bxs-right-arrow'></i>

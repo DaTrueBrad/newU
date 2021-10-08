@@ -26,6 +26,9 @@ const Users = connection.define(
     deadlift_stat: {
       type: DataTypes.INTEGER,
     },
+    current: {
+      type: DataTypes.INTEGER,
+    }
   },
   {
     updatedAt: false,

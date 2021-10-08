@@ -5,8 +5,12 @@ import Week from './Week'
 function BuildWorkout() {
   const [userInput, setUserInput] = useState(0)
   const [days, setDays] = useState(1)
-  // const [globalVar, setGlobalVar] = useState(1)
+  const [name, setName] = useState('')
   const [isActive, setActive] = useState("false");
+
+  function changeName(e) {
+    setName(e.target.value)
+  }
 
   let newData = {}
   const eventHandler = (data) => {
@@ -54,7 +58,7 @@ function BuildWorkout() {
   function saveWorkout() {
      let id = +localStorage.getItem('user')
     let workout = {
-      name: "Cool Workout",
+      name: name,
       data: newData,
       id: id
     }
@@ -67,6 +71,7 @@ function BuildWorkout() {
     <div id='build-workout-page'>
       <h1 id='page-title'>Build Program</h1>
       <p>Be warned, this page does NOT save your data if you navigate away from it during a build. Please have an idea of what program you want to design, then come here and build it.</p>
+        <input type="text" placeholder="Name of Program" onChange={(e) => changeName(e)}/>
       <div className="button-container" style={{alignSelf: "center"}}>
       <button style={{alignSelf: "center"}} onClick={buttonClick}>Restart</button>
       </div>

@@ -11,9 +11,10 @@ function Current() {
 
   const getWorkout = async () => {
     res = await axios.get('/workouts')
-    setName(res.data.name)
-    setId(res.data.id)
-    setData(JSON.parse(res.data.data))
+    setName(res.data[0][0].name)
+    setId(res.data[0][0].id)
+    setData(JSON.parse(res.data[0][0].data))
+    console.log(data)
   }
   useEffect(() => {
     getWorkout()
@@ -213,6 +214,31 @@ function Current() {
               )
             }
             break;
+          default:
+            arr.push(
+              <div>
+                <div className="day-of-week-container">
+                  <h3>Unknown Day</h3>
+                </div>
+                <div className="show-workout">
+                  <h4>Exercise</h4>
+                  <h4>Sets</h4>
+                  <h4>Reps</h4>
+                  <h4>Weight</h4>
+                </div>
+              </div>
+            )
+            for(let x = 1; x <= Object.keys(data[`Week_${i}`]['days']['undefined']).length; x++) {
+              let day = data[`Week_${i}`]['days']['undefined'][x]
+              arr.push(
+                <div className='show-workout'>
+                  <p>{day.exercise}</p>
+                  <p>{day.sets}</p>
+                  <p>{day.reps}</p>
+                  <p>{day.weight}</p>
+                </div>
+              )
+            }
         }        
       }
     }

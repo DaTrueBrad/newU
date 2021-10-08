@@ -15,7 +15,7 @@ function DaysOfWeek(props) {
   function CreateDays() {
     const daysArr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     let days = daysArr.map((element, index) => {
-      return <Day element={element} key={index} onChange={eventhandler} weeknum={props.weekNum}/>
+      return <Day element={element} key={index} number={index} onChange={eventhandler} weeknum={props.weekNum}/>
     })
     return days
   }

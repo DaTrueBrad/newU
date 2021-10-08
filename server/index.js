@@ -4,7 +4,7 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 const ctrl = require('./controllers/controller')
-const connect = require('./database/db')
+const sequelize = require('./database/db')
 
 // Middleware
 app.use(express.json());
@@ -18,13 +18,14 @@ app.post('/login', ctrl.login)
 app.post('/workouts', ctrl.postWorkout)
 app.get('/workouts', ctrl.getCurrent)
 app.get('/myworkouts', ctrl.getMyWorkouts)
+app.post('/currentworkout', ctrl.selectCurrent)
 
 //! this is a catch-all for the build environment
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
-connect.connect()
+sequelize.connect()
 //connection to port
 const { PORT } = process.env;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

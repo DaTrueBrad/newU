@@ -16,6 +16,33 @@
     font-size: 16px;
   }
 
+  .custom-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .custom-workout-card {
+    border: 2px solid #3C3C3C;
+    border-radius: 5px;
+    padding: 0;
+    margin: 8px 0px;
+    box-shadow: 0px 3px 10px #b9b9b9;
+  }
+
+  .custom-workout-card h2 {
+    margin: 0;
+    padding: 2px;
+    color: #3C3C3C;
+    text-align: center;
+    background-color: #FFA620;
+    border-bottom: 2px solid #3C3C3C;
+  }
+
+  .all-custom-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
   .not-logged-in {
     display: flex;
     flex-direction: column;

@@ -2,7 +2,8 @@ const Article = require('../models/articles')
 const Users = require('../models/users')
 const bcrypt = require("bcrypt");
 const { Redirect } = require('react-router');
-const Workouts = require('../models/workouts')
+const Workouts = require('../models/workouts');
+const sequelize = require('../database/sequelize');
 
 module.exports = {
   getArticles: async (req, res) => {
@@ -63,13 +64,19 @@ module.exports = {
     return res.status(200).send(`${req.body.name} successfully Saved!`)
   },
   getCurrent: async (req, res) => {
-    const workout = await Workouts.findOne({ where: { id: 8}})
-    console.log('server side')
+    const workout = await sequelize.query("SELECT w.id, w.name, w.data FROM workouts w, users u WHERE u.current = w.id")
+    console.log(workout)
+    // const workout = await Workouts.belongsTo(Users, {foreignKey: 'current'})
+    // console.log('server side')
     res.status(200).send(workout)
   },
   getMyWorkouts: async (req, res) => {
     console.log(req.query)
     const workouts = await Workouts.findAll({where: {created_by: req.query.id} })
     res.status(200).send(workouts)
+  },
+  selectCurrent: async (req, res) => {
+    const current = await Users.update({current: req.body.id}, {where: {id: req.body.user}})
+    res.status(200).send('success')
   }
 }

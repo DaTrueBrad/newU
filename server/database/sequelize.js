@@ -3,7 +3,7 @@ require("dotenv").config();
 const {DATABASE, HOST, USER, PASSWORD} = process.env
 
 
-const connection = new Sequelize(
+const sequelize = new Sequelize(
   DATABASE,
   USER,
   PASSWORD,
@@ -28,4 +28,4 @@ const connection = new Sequelize(
     }
   }
 
-module.exports = connection
+module.exports = sequelize
