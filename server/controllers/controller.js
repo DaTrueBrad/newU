@@ -64,10 +64,8 @@ module.exports = {
     return res.status(200).send(`${req.body.name} successfully Saved!`)
   },
   getCurrent: async (req, res) => {
-    const workout = await sequelize.query("SELECT w.id, w.name, w.data FROM workouts w, users u WHERE u.current = w.id")
+    const workout = await sequelize.query(`SELECT w.id, w.name, w.data FROM workouts w, users u WHERE u.id = ${req.query.id} AND u.current = w.id`)
     console.log(workout)
-    // const workout = await Workouts.belongsTo(Users, {foreignKey: 'current'})
-    // console.log('server side')
     res.status(200).send(workout)
   },
   getMyWorkouts: async (req, res) => {

@@ -10,11 +10,14 @@ function Current() {
   const [data, setData] = useState()
 
   const getWorkout = async () => {
-    res = await axios.get('/workouts')
-    setName(res.data[0][0].name)
-    setId(res.data[0][0].id)
-    setData(JSON.parse(res.data[0][0].data))
-    console.log(data)
+    let id = localStorage.getItem('user')
+    res = await axios.get('/workouts', {params: {id: id}})
+    if(Object.keys(res.data[0]).length != 0) {
+      setName(res.data[0][0].name)
+      setId(res.data[0][0].id)
+      setData(JSON.parse(res.data[0][0].data))
+    }
+    console.log(res)
   }
   useEffect(() => {
     getWorkout()
@@ -22,7 +25,6 @@ function Current() {
 
   function RenderWorkout() {
     let arr = []
-    //todo find a variable for the Monday section, figure out how to loop through it.
     for (let i = 1; i <= Object.keys(data).length; i++) {
       arr.push (
         <div className='week-container'>
