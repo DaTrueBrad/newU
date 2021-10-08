@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useFormik } from 'formik'
+import { useFormik,  } from 'formik'
 import React, {useState} from 'react'
 import { Collapse } from 'react-collapse'
 import { Route, Switch } from 'react-router'
@@ -26,11 +26,19 @@ const onSubmit = (values) => {
 }
 
 const validate = (values) => {
-  if(values.password === values.passwordTwo) {
-    console.log('they match!')
-  } else {
-    console.log('no matchie')
+  const errors = {}
+  if(!values.username) {
+    errors.username = "Username Required"
+  } else if(!/^[a-z0-9_-]{3,16}$/i.test(values.username)) {
+    errors.username = "Must be between 3-16 characters, alphanumeric, and can include '-' or '_'."
   }
+  if(!values.password) {
+    errors.password = "Password Required"
+  } else if(values.password != values.passwordTwo) {
+    errors.password = "Passwords must match"
+    errors.passwordTwo = "Passwords must match"
+  }
+  return errors
 }
 
 function LandingPage(props) {
@@ -89,25 +97,34 @@ function LandingPage(props) {
               <Collapse isOpened={signUp}>
                 <div className="input-container">
                   <form onSubmit={formik.handleSubmit}>
+                  <div className="form-control">
+                        {formik.errors.username ? <div  className='error'>{formik.errors.username}</div> : null}
+                      </div>
                     <input
                       type="text"
                       name='username'
                       onChange={formik.handleChange}
                       value={formik.values.username}
                       placeholder='Username'/>
+                      <div className="form-control">
+                        {formik.errors.password ? <div  className='error'>{formik.errors.password}</div> : null}
+                      </div>
                     <input
                       type="password"
                       name='password'
                       onChange={formik.handleChange}
                       value={formik.values.password}
                       placeholder='Password' />
+                      <div className="form-control">
+                        {formik.errors.passwordTwo ? <div  className='error'>{formik.errors.passwordTwo}</div> : null}
+                      </div>
                     <input
                       type="password"
                       name='passwordTwo'
                       onChange={formik.handleChange}
                       value={formik.values.passwordTwo}
                       placeholder='Re-enter Password'/>
-                    <button type='submit'>Register</button>
+                    <button type='submit' disabled={!formik.isValid}>Register</button>
                   </form>
                   
                 </div>
@@ -124,7 +141,7 @@ function LandingPage(props) {
                       placeholder="Username"
                       onChange={(e) => loginChangeUser(e)}/>
                     <input
-                      type="text"
+                      type="password"
                       name='loginPassword'
                       placeholder="Password"
                       onChange={(e) => loginChangePass(e)} />

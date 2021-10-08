@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 @media only screen and (max-width: 599px) {
   html {
     font-family: "Roboto";
@@ -27,6 +31,10 @@
     padding: 0;
     margin: 8px 0px;
     box-shadow: 0px 3px 10px #b9b9b9;
+  }
+
+  .error {
+    color: red;
   }
 
   .custom-workout-card h2 {
@@ -145,14 +153,13 @@
     left: 0;
     background-color: white;
     z-index: 500;
-    box-shadow: 0px 2px 10px #b9b9b9;
+    /* box-shadow: 0px 2px 10px #b9b9b9; */
   }
   header i {
     position:inherit;
     top: 2%;
     left: 85%;
     font-size: 48px;
-    color: #DBD3AD;
     z-index: 100;
   }
 
@@ -359,11 +366,12 @@
     margin-top: 20px;
     display: flex;
     align-items: center;
-    background-color: #FFA620;
+    background-color: #3c3c3c;
     border: 2px solid #3C3C3C;
     border-radius: 5px;
     height: 50px;
     width: 100%;
+    /* box-shadow: 0px 3px 10px rgba(0,0,0,0.5); */
   }
   
   #week-container {
@@ -378,7 +386,7 @@
   .week-container i {
     font-size: 30px;
     padding: 0px 10px;
-    color: #3C3C3C;
+    color: #FFA620;
     transform: rotate(-90);
   
   }
@@ -391,7 +399,7 @@
   }
   .week-container h2 {
     font-size: 28px;
-    color: #3C3C3C;
+    color: #FFA620;
   }
   
   .collapse-container {
@@ -462,6 +470,7 @@
     text-align: center;
     width: 100%;
     margin: 0;
+    margin-top: -1px;
     padding: 0;
     border-bottom: 2px solid #3C3C3C;
   }
@@ -478,7 +487,11 @@
     padding: 2px;
     color: #3C3C3C;
     text-align: center;
-    background-color: #FFA620;
+    margin-top: -1px;
+    color: #f1f1f1;
+    background-color: #3C3C3C;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
     border-bottom: 2px solid #3C3C3C;
   }
   
@@ -812,7 +825,7 @@
     margin-top: 20px;
     display: flex;
     align-items: center;
-    background-color: #FFA620;
+    background-color: #3c3c3c;
     border: 2px solid #3C3C3C;
     border-radius: 5px;
     height: 50px;
@@ -831,20 +844,21 @@
   .week-container i {
     font-size: 30px;
     padding: 0px 10px;
-    color: #3C3C3C;
+    color: #FFA620;
     transform: rotate(-90);
-  
+    transition: all 0.3s ease;
   }
   
   #rotate {
     transform: rotate(-90);
+    transition: all 0.3s ease;
   }
   form {
     margin-bottom: 30px;
   }
   .week-container h2 {
     font-size: 28px;
-    color: #3C3C3C;
+    color: #FFA620;
   }
   
   .collapse-container {
@@ -915,6 +929,7 @@
     text-align: center;
     width: 100%;
     margin: 0;
+    margin-top: -1px;
     padding: 0;
     border-bottom: 2px solid #3C3C3C;
   }
@@ -953,7 +968,11 @@
     padding: 2px;
     color: #3C3C3C;
     text-align: center;
-    background-color: #FFA620;
+    margin-top: -1px;
+    color: #f1f1f1;
+    background-color: #3C3C3C;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     border-bottom: 2px solid #3C3C3C;
   }
   

@@ -31,6 +31,8 @@ function Custom() {
     alert("You have changed your current program! Check it out on the 'Current' tab!")
   }
 
+  //todo a favorite would look like an axios get with params to get all the favorites for user, and compare the workout id with the id on the favorites table. Simple. If it exists, render a full star. If it doesn't, render an empty star.
+
   const Display = () => {
     if (data === undefined) {
       return <Spinner />
