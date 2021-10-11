@@ -12,7 +12,7 @@ function Spinner(props) {
 
   return (
     <div className="sweet-loading">
-      <DotLoader color={'#FFA620'} loading={props.loading} css={override} size={150} />
+      <DotLoader color={'#FFA620'}  loading={props.loading} css={override} size={150} />
     </div>
   );
 }

@@ -77,7 +77,7 @@ function Day(props) {
   }
 
   return (
-    <div id='annoying-container'>
+    <div className="current-day-container">
       <section className="day-of-week-container" onClick={setVisability}>
         <ArrowDirection />
         <h3>{props.element}</h3>

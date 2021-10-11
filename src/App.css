@@ -5,6 +5,7 @@
 @media only screen and (max-width: 599px) {
   html {
     font-family: "Roboto";
+    background-color: #303433;
   }
 
   .show-workout {
@@ -69,6 +70,7 @@
   
   .App {
     padding: 20px;
+    background-color: #303433;
   }
   img {
     padding-top: 60px;
@@ -85,11 +87,12 @@
     margin-top: 12px;
     margin-bottom: 13px;
     border: 2px solid #FFA620;
-    background-color: white;
+    background-color: #FFA620;
     height: 48px;
     width: 150px;
     font-size: 24px;
-    border-radius: 5px;
+    border-radius: 15px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
     color: #3C3C3C;
   }
   
@@ -115,6 +118,7 @@
 
   p {
     font-size: 18px;
+    color: white;
   }
   
   .input-container {
@@ -141,7 +145,7 @@
   }
   
   header {
-    height: 60px;
+    height: 75px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -213,6 +217,11 @@
     border-radius: 5px;
   }
 
+  table {
+    border-radius: 15px;
+    color: white;
+  }
+
   #hide-workout {
     position: fixed;
     top: -500%;
@@ -255,7 +264,7 @@
     padding: 5px;
     font-size: 28px;
     margin-top: 15px;
-    border-radius: 5px;
+    border-radius: 15px;
     z-index: 120;
   }
   
@@ -276,7 +285,7 @@
   
   .ReactCollapse--collapse {
     transition: all 0.3s ease-in-out;
-    width: 98%;
+    width: 100%;
   }
   
   #build-workout-page {
@@ -295,7 +304,7 @@
   .button-container-flex {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .button-container-flex button {
@@ -334,6 +343,11 @@
   
   #page-title {
     z-index: 100;
+    color: #FFA620;
+  }
+
+  .program-container h2 {
+    color: white;
   }
 
   .sign-up-button {
@@ -364,19 +378,27 @@
   
   .week-container {
     margin-top: 20px;
+    padding-left: 15px;
     display: flex;
     align-items: center;
     background-color: #3c3c3c;
     border: 2px solid #3C3C3C;
-    border-radius: 5px;
+    border-radius: 15px;
     height: 50px;
     width: 100%;
-    /* box-shadow: 0px 3px 10px rgba(0,0,0,0.5); */
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
+  }
+
+  .current-day-container {
+    background-color: #3C3C3C;
+    border-radius: 15px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
   }
   
   #week-container {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
   
   #save-btn {
@@ -408,18 +430,14 @@
     align-items: center;
   }
   
-  #annoying-container {
-    width: 100%;
-  }
-  
   .day-of-week-container {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 30px;
+    height: 35px;
     font-size: 24px;
     border: 1px solid #3C3C3C;
-    border-radius: 5px;
+    border-radius: 15px;
     margin: 5px 0px;
     padding: 3px 0px;
   }
@@ -427,12 +445,13 @@
   .day-of-week-container i {
     font-size: 30px;
     padding: 0px 10px;
-    color: #3C3C3C;
+    color: white;
   }
   .day-of-week-container h3 {
     font-size: 24px;
     font-family: "roboto";
-    color: #3C3C3C;
+    color: white;
+    padding-left: 15px;
   }
   
   .daily-exercise-container {
@@ -445,7 +464,7 @@
   
   .exercise-input {
     font-size: 15px;
-    width: 100px;
+    width: 140px;
     margin-right: 5px;
   }
   
@@ -632,7 +651,7 @@
 
   p {
     font-size: 20px;
-    color: #3C3C3C;
+    color: white;
   }
 
   #about-section {
@@ -687,7 +706,7 @@
   .input-workout-container {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   
@@ -804,7 +823,7 @@
   
   .ReactCollapse--collapse {
     transition: all 0.3s ease-in-out;
-    width: 98%;
+    width: 100%;
   }
   
   

@@ -47,7 +47,7 @@ function Current() {
               )
             }
             arr.push(
-              <div>
+              <div className="current-day-container">
                 <div className="day-of-week-container">
                   <h3>Monday</h3>
                 </div>
@@ -79,7 +79,7 @@ function Current() {
               )
             }
             arr.push(
-              <div>
+              <div className="current-day-container">
                 <div className="day-of-week-container">
                   <h3>Tuesday</h3>
                 </div>
@@ -112,7 +112,7 @@ function Current() {
               )
             }
             arr.push(
-              <div>
+              <div className="current-day-container">
                 <div className="day-of-week-container">
                   <h3>Wednesday</h3>
                 </div>
@@ -145,7 +145,7 @@ function Current() {
               )
             }
             arr.push(
-              <div>
+              <div className="current-day-container">
                 <div className="day-of-week-container">
                   <h3>Thursday</h3>
                 </div>
@@ -178,7 +178,7 @@ function Current() {
               )
             }
             arr.push(
-              <div>
+              <div className="current-day-container">
                 <div className="day-of-week-container">
                   <h3>Friday</h3>
                 </div>
@@ -211,7 +211,7 @@ function Current() {
               )
             }
             arr.push(
-              <div>
+              <div className="current-day-container">
                 <div className="day-of-week-container">
                   <h3>Saturday</h3>
                 </div>
@@ -243,7 +243,7 @@ function Current() {
               )
             }
             arr.push(
-              <div>
+              <div className="current-day-container">
                 <div className="day-of-week-container">
                   <h3>Sunday</h3>
                 </div>
@@ -276,7 +276,7 @@ function Current() {
               )
             }
             arr.push(
-              <div>
+              <div className="current-day-container">
                 <div className="day-of-week-container">
                   <h3>Unknown Day (what)</h3>
                 </div>
@@ -305,7 +305,7 @@ function Current() {
       return <Spinner />
     } else {
       return (
-        <div>
+        <div className="program-container">
           <h2>{name}</h2>
           <RenderWorkout />
         </div>
@@ -315,7 +315,7 @@ function Current() {
 
   return (
     <div>
-      <h1>Let's Workout!</h1>
+      <h1 id="page-title">Let's Workout!</h1>
       <Display />
     </div>
   )
