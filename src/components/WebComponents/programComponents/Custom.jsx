@@ -31,6 +31,16 @@ function Custom() {
     alert("You have changed your current program! Check it out on the 'Current' tab!")
   }
 
+  const addFavorite = async (id) => {
+    let user = +localStorage.getItem('user')
+    let bodyObj = {
+      id: id,
+      user: user
+    }
+    await axios.post('/favoriteworkout', bodyObj)
+    .then((res) => console.log(res.data))
+  }
+
   //todo a favorite would look like an axios get with params to get all the favorites for user, and compare the workout id with the id on the favorites table. Simple. If it exists, render a full star. If it doesn't, render an empty star.
 
   const Display = () => {
@@ -48,6 +58,7 @@ function Custom() {
               </div>
               <div>
                 <i className='bx bxs-trash' style={{color: "red", fontSize: 36}} onClick={() => deleteWorkout(element.id)}></i>
+                <i class='bx bx-star' style={{color: "#FFA620", fontSize: 36}} onClick={() => addFavorite(element.id)}></i>
                 <i className='bx bx-check-square' style={{color: "green", fontSize: 36}} onClick={() => selectCurrent(element.id)}></i>
               </div>
             </div>

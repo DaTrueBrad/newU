@@ -4,7 +4,7 @@ import DaysOfWeek from './DaysOfWeek'
 
 function Week(props) {
   const [isActive, setActive] = useState(false);
-  // const [dataArr, setDataArr] = useState([])
+  const [hideBtn, setHideBtn] = useState(false)
   function ArrowDirection() {
     if(isActive) {
       return <i className='bx bxs-down-arrow' ></i>
@@ -27,6 +27,7 @@ function Week(props) {
       name: `Week_${props.weekNum}`,
       days: newData
     }
+    setHideBtn(!hideBtn)
     props.onChange(object)
   }
 
@@ -38,7 +39,7 @@ function Week(props) {
       </div>
       <Collapse isOpened={isActive}>
         <DaysOfWeek weeknum={props.weekNum} onChange={eventHandler}/>
-        <button onClick={sendUp}>Save Week</button>
+        <button className={hideBtn ? "invisible" : ""} onClick={sendUp}>Save Week</button>
       </Collapse>
       
     </div>

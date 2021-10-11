@@ -5,7 +5,7 @@ import BuildWorkout from './BuildWorkout'
 import Header from './Header'
 import Current from './Current'
 import Profile from './profileComponents/Profile'
-import Favorites from './Favorites'
+import Favorites from './favoriteComponents/Favorites'
 import Programs from './programComponents/Programs'
 
 function Content(props) {

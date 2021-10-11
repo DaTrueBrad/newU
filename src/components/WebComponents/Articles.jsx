@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Spinner from '../Spinner'
+import FavArticles from './favoriteComponents/FavArticles'
 
   
 function Articles() {
@@ -14,7 +15,15 @@ function Articles() {
   useEffect(() => {
     getData()
   }, [])
-  
+  const favArticle = async (id) => {
+    let user = +localStorage.getItem('user')
+    let bodyObj = {
+      id: id,
+      user: user
+    }
+    await axios.post('/favoritearticle', bodyObj)
+    .then((res) => console.log(res.data))
+  }
     
   const Display = () => {
     if(data === undefined) {
@@ -33,7 +42,7 @@ function Articles() {
             <div className="article-button-container">
               <div className="save-container">
                 <p>Save</p>
-                <i class='bx bx-bookmark'></i>
+                <i class='bx bx-bookmark' onClick={() => favArticle(el.id)}></i>
               </div>
               <a href={el.url} target='_blank' rel="noreferrer"><button>View</button></a>
             </div>

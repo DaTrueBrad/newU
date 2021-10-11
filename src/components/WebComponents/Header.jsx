@@ -38,7 +38,7 @@ function Header(props) {
             activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}}
             onClick={menuClick}>Programs</NavLink>
           <NavLink
-            to='/dashboard/favorites'
+            to='/dashboard/favorites/programs'
             activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C"}}
             onClick={menuClick}>Favorites</NavLink>
           <NavLink

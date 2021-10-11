@@ -11,7 +11,7 @@ function BuildWorkout() {
   function changeName(e) {
     setName(e.target.value)
   }
-
+  
   let newData = {}
   const eventHandler = (data) => {
     console.log('Top Component:', data)
@@ -71,7 +71,8 @@ function BuildWorkout() {
     <div id='build-workout-page'>
       <h1 id='page-title'>Build Program</h1>
       <p>Be warned, this page does NOT save your data if you navigate away from it during a build. Please have an idea of what program you want to design, then come here and build it.</p>
-        <input type="text" placeholder="Name of Program" onChange={(e) => changeName(e)}/>
+      {/* //TODO the name changer is re rendering the whol epage, causin glag. Change to formik form, and add min-maxing for nam elength (75 max) */}
+        <input type="text" min='4' max='75' placeholder="Name of Program" onChange={(e) => changeName(e)}/>
       <div className="button-container" style={{alignSelf: "center"}}>
       <button style={{alignSelf: "center"}} onClick={buttonClick}>Restart</button>
       </div>

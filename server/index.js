@@ -19,6 +19,11 @@ app.post('/workouts', ctrl.postWorkout)
 app.get('/workouts', ctrl.getCurrent)
 app.get('/myworkouts', ctrl.getMyWorkouts)
 app.post('/currentworkout', ctrl.selectCurrent)
+//favorite endpoints
+app.get('/favoriteworkout', ctrl.getFavWorkouts)
+app.get('/favoritearticles', ctrl.getFavArticles)
+app.post('/favoriteworkout', ctrl.favWorkout)
+app.post('/favoritearticle', ctrl.favArticle)
 
 //! this is a catch-all for the build environment
 app.get('/*', function (req, res) {

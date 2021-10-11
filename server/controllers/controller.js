@@ -40,17 +40,18 @@ module.exports = {
   },
   login: async (req, res) => {
     const {username, password} = req.body
-
-    const validUser = await Users.findOne({ where: { username: username } });
+    //TODO FIgure out a way to hash the password the person sends in, compare it to one on file, and THEN log the user in.
+    // const validUser = await Users.findOne({ where: { username: username } });
+    const validUser = await sequelize.query(`SELECT * FROM users WHERE username='${username}'`)
+    console.log(validUser[0][0].password)
     if (validUser) {
-      console.log('valid user is:',validUser);
-      if (bcrypt.compareSync(password, validUser.dataValues.password)) {
-        return res.status(200).send((validUser.dataValues.id).toString())
+      if (bcrypt.compareSync(password, validUser[0][0].password)) {
+        return res.status(200).send((validUser[0][0].id).toString())
       } else {
-        return res.status(200).send("Password Incorrect");
+        return res.status(500).send("Password Incorrect");
       }
     } else {
-      return res.status(200).send("Username not found. Please check your spelling.");
+      return res.status(500).send("Username or Password is incorrect.");
     }
   },
   postWorkout: async (req, res) => {
@@ -76,5 +77,23 @@ module.exports = {
   selectCurrent: async (req, res) => {
     const current = await Users.update({current: req.body.id}, {where: {id: req.body.user}})
     res.status(200).send('success')
+  },
+  favWorkout: async (req, res) => {
+    const {id, user} = req.body
+    await sequelize.query(`INSERT INTO favorite_workouts (user_id, workout_id) VALUES ('${user}', '${id}')`)
+    res.status(200).send("success!")
+  },
+  getFavWorkouts: async (req, res) => {
+    const favoriteWorkouts = await sequelize.query(`SELECT w.id, w.name, w.data FROM favorite_workouts fw, workouts w WHERE fw.user_id = ${+req.query.user} AND w.id = fw.workout_id`)
+    res.status(200).send(favoriteWorkouts)
+  },
+  favArticle: async (req, res) => {
+    const {id, user} = req.body
+    await sequelize.query(`INSERT INTO favorite_articles (user_id, article_id) VALUES ('${user}', '${id}')`)
+    res.status(200).send("success!")
+  },
+  getFavArticles: async (req, res) => {
+    const favoriteArticles = await sequelize.query(`SELECT a.id, a.title, a.author, a.description, a.url FROM articles a, favorite_articles fa WHERE fa.user_id = ${+req.query.user} AND a.id = fa.article_id`)
+    res.status(200).send(favoriteArticles)
   }
 }
