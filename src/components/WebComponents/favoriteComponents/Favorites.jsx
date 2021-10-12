@@ -8,7 +8,7 @@ function Favorites() {
 
   return (
   <div>
-    <h1>Favorites</h1>
+    <h1 id="page-title">Favorites</h1>
     <div className="user-selection-container">
       <NavLink to='/dashboard/favorites/programs' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5"} }>Programs</NavLink>
       <NavLink to='/dashboard/favorites/articles' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5"}}>Articles</NavLink>

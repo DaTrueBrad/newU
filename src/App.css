@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+input {
+  background-color: #616463;
+  color: white;
+}
+
+
+
 @media only screen and (max-width: 599px) {
   html {
     font-family: "Roboto";
@@ -26,12 +33,17 @@
     align-items: center;
     justify-content: space-around;
   }
+
+  .custom-info-container h3 {
+    color: white;
+  }
+
   .custom-workout-card {
-    border: 2px solid #3C3C3C;
-    border-radius: 5px;
-    padding: 0;
+    background-color: #3c3c3c;
+    border-radius: 15px;
+    padding: 0px 5px;
     margin: 8px 0px;
-    box-shadow: 0px 3px 10px #b9b9b9;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
   }
 
   .error {
@@ -41,10 +53,9 @@
   .custom-workout-card h2 {
     margin: 0;
     padding: 2px;
-    color: #3C3C3C;
+    color: white;
     text-align: center;
-    background-color: #FFA620;
-    border-bottom: 2px solid #3C3C3C;
+    /* border-bottom: 2px solid #3C3C3C; */
   }
 
   .all-custom-container {
@@ -122,7 +133,7 @@
   }
   
   .input-container {
-    /* margin-top: 30px; */
+    margin-top: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -200,7 +211,7 @@
   .workout-input-container {
     position: absolute;
     display: flex;
-    top: 380px;
+    top: 450px;
     left: 50%;
     flex-direction: column;
     align-items: center;
@@ -210,11 +221,15 @@
     width: 300px;
     margin-top: -200px;
     margin-left: -150px;
-    background: white;
+    background: #3c3c3c;
     padding-top: 0px;
     z-index: 100;
     box-shadow: 0px 3px 10px rgba(0,0,0,0.8);
     border-radius: 5px;
+  }
+
+  .workout-input-container h2 {
+    color: white;
   }
 
   table {
@@ -392,6 +407,8 @@
   .current-day-container {
     background-color: #3C3C3C;
     border-radius: 15px;
+    margin-top: 10px;
+    padding: 5px 5px;
     box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
   }
   
@@ -479,26 +496,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid #3C3C3C;
-    border-radius: 5px;
+    padding: 0px 5px;
+    border-radius: 15px;
     margin-bottom: 15px;
+    background-color: #3C3C3C;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
   }
   .disclaimer-container h2 {
-    background-color: #3C3C3C;
     color: #FFA620;
     text-align: center;
     width: 100%;
     margin: 0;
     margin-top: -1px;
     padding: 0;
-    border-bottom: 2px solid #3C3C3C;
   }
   
   .article-card {
     width: 100%;
     border: 2px solid #3C3C3C;
-    border-radius: 5px;
+    border-radius: 15px;
     margin-bottom: 15px;
+    padding: 0px 5px;
+    background-color: #3C3C3C;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
   }
   
   .article-card h2 {
@@ -508,7 +528,6 @@
     text-align: center;
     margin-top: -1px;
     color: #f1f1f1;
-    background-color: #3C3C3C;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom: 2px solid #3C3C3C;
@@ -519,14 +538,22 @@
   }
   
   .save-container {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     align-items: center;
   }
   .save-container i {
-    font-size: 28px;
+    font-size: 30px;
     color: #FFA620;
     padding: 5px;
+  }
+
+  .article-button-container {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
   }
   
   .profile-container {
@@ -551,7 +578,7 @@
     width: 33%;
     font-size: 24px;
     text-decoration: none;
-    color: #3C3C3C;
+    color: #FFA620;
     padding: 5px 0;
     border-radius: 5px;
   }
@@ -938,7 +965,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid #3C3C3C;
+    background-color: #3c3c3c;
+    /* border: 2px solid #3C3C3C; */
     border-radius: 5px;
     margin-bottom: 15px;
   }
