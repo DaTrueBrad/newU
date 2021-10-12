@@ -247,6 +247,11 @@ input {
   .workout-input-container h2 {
     color: white;
   }
+  .workout-input-container p {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
 
   table {
     border-radius: 15px;
@@ -291,7 +296,7 @@ input {
   
   .nav-menu a {
     text-decoration: none;
-    color: #FFA620;
+    color: white;
     padding: 5px;
     font-size: 28px;
     margin-top: 15px;
@@ -403,9 +408,11 @@ input {
     margin: 0;
     padding-top: 0px;
   }
-  .workout-input-container p {
-    margin: 5px 0 10px 0;
+  .workout-input-container h3 {
+    margin: 0;
+    padding: 8px 0px;
   }
+  
   
   .week-container {
     margin-top: 20px;

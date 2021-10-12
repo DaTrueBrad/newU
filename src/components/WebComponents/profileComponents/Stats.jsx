@@ -4,6 +4,7 @@ import Spinner from '../../Spinner'
 
 function Stats() {
   const [data, setData] = useState()
+  const [hide, setHide] = useState(false)
   const GetStats = async () => {
     let user = +localStorage.getItem("user")
     let res = await axios.get('/userStats', {params: {user: user}})
@@ -40,8 +41,8 @@ function Stats() {
               <td>{data.deadlift_stat ? data.deadlift_stat : "TBD"}</td>
               <td>{data.deadlift_date}</td>
             </tr>
-
           </tbody>
+          <button onClick={() => setHide(!hide)}>Update</button>
         </table>
         
       )

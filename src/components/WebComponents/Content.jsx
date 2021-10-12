@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
 import Articles from './Articles'
-import BuildWorkout from './BuildWorkout'
+import BuildWorkout from './buildComponents/BuildWorkout'
 import Header from './Header'
 import Current from './Current'
 import Profile from './profileComponents/Profile'

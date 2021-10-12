@@ -17,6 +17,7 @@ app.post('/users', ctrl.newUser)
 app.post('/login', ctrl.login)
 app.post('/workouts', ctrl.postWorkout)
 app.get('/workouts', ctrl.getCurrent)
+app.delete('/deleteWorkout', ctrl.deleteWorkout)
 app.get('/myworkouts', ctrl.getMyWorkouts)
 app.post('/currentworkout', ctrl.selectCurrent)
 //favorite endpoints

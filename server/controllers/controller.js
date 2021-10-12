@@ -46,7 +46,12 @@ module.exports = {
     console.log(validUser[0][0].password)
     if (validUser) {
       if (bcrypt.compareSync(password, validUser[0][0].password)) {
-        return res.status(200).send((validUser[0][0].id).toString())
+        let object = {
+          id: validUser[0][0].id,
+          username: validUser[0][0].username
+        }
+        return res.status(200).send(object)
+        // return res.status(200).send((validUser[0][0].id).toString())
       } else {
         return res.status(500).send("Password Incorrect");
       }
@@ -100,5 +105,9 @@ module.exports = {
     const stats = await sequelize.query(`SELECT bench_stat, squat_stat, deadlift_stat, to_char(bench_date, 'MM-DD-YYYY') as bench_date, to_char(squat_date, 'MM-DD-YYYY') as squat_date, to_char(deadlift_date, 'MM-DD-YYYY') as deadlift_date FROM users WHERE id = ${req.query.user}`)
     console.log(stats)
     res.status(200).send(stats)
+  },
+  deleteWorkout: async (req, res) => {
+    await sequelize.query(`DELETE FROM workouts WHERE id = ${req.body.id}`)
+    res.status(200).send("success!")
   }
 }

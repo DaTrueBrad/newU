@@ -75,7 +75,9 @@ function LandingPage(props) {
     };
     return axios.post('/login', bodyObj)
     .then((res) => {
-      localStorage.setItem('user', JSON.stringify(res.data))
+      console.log(res.data)
+      localStorage.setItem('user', JSON.stringify(res.data.id))
+      localStorage.setItem('username', res.data.username)
       props.isLoggedIn()
     })
   }

@@ -12,6 +12,7 @@ function Header(props) {
   function logout() {
     setActive(!isActive)
     localStorage.removeItem('user')
+    localStorage.removeItem('username')
     props.isLoggedIn()
   }
 
@@ -21,6 +22,7 @@ function Header(props) {
         <img src="../../logo.png" alt="" />
         <i className='bx bx-menu' onClick={() => menuClick()} style={{color: `${isActive ? "" : "#FFA620"}`}}></i>
         <nav className="nav-menu" id={`${isActive ? "hidden" : ""}`}>
+          <h2 id="page-title">Welcome, {localStorage.getItem("username")}</h2>
           <NavLink
             to='/dashboard/current'
             activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
