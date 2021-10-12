@@ -95,5 +95,10 @@ module.exports = {
   getFavArticles: async (req, res) => {
     const favoriteArticles = await sequelize.query(`SELECT a.id, a.title, a.author, a.description, a.url FROM articles a, favorite_articles fa WHERE fa.user_id = ${+req.query.user} AND a.id = fa.article_id`)
     res.status(200).send(favoriteArticles)
+  },
+  getStats: async (req, res) => {
+    const stats = await sequelize.query(`SELECT bench_stat, squat_stat, deadlift_stat, to_char(bench_date, 'MM-DD-YYYY') as bench_date, to_char(squat_date, 'MM-DD-YYYY') as squat_date, to_char(deadlift_date, 'MM-DD-YYYY') as deadlift_date FROM users WHERE id = ${req.query.user}`)
+    console.log(stats)
+    res.status(200).send(stats)
   }
 }

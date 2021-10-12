@@ -525,6 +525,7 @@ input {
     margin: 0;
     margin-top: -1px;
     padding: 0;
+    padding-top: 5px;
   }
   
   .article-card {
@@ -588,7 +589,12 @@ input {
     display: flex;
     justify-content: space-around;
   }
-  
+  .variable-container {
+    width: 100%;
+  }
+  .user-info {
+    width: 100%;
+  }
   .user-selection-container a {
     text-align: center;
     width: 33%;
@@ -612,63 +618,118 @@ input {
 @media only screen and (min-width: 600px) {
   html {
     font-family: "Roboto";
-  }
-  #landing-page {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    align-items: center;
-  }
-  .App {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: #303433;
   }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #303433;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFA620;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FFA620;
+}
+
+  .show-workout {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+  }
+
+  .show-workout p {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .custom-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .custom-info-container h3 {
+    color: white;
+  }
+
+  .custom-workout-card {
+    background-color: #3c3c3c;
+    border-radius: 15px;
+    width: 300px;
+    padding: 0px 5px;
+    margin: 8px 1vw;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
+  }
+
+  .error {
+    color: red;
+  }
+
+  .custom-workout-card h2 {
+    margin: 0;
+    padding: 2px;
+    color: white;
+    text-align: center;
+    /* border-bottom: 2px solid #3C3C3C; */
+  }
+
+  .all-custom-container {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* flex-direction: column-reverse; */
+  }
+
+  .not-logged-in {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .App {
+    padding: 20px;
+    background-color: #303433;
+  }
   img {
     padding-top: 60px;
     padding-bottom: 40px;
-    width: 40%;
-  }
-  .button-container {
-    display: flex;
-    justify-content: space-around;
-    width: 60%;
-  }
-  .sign-up-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .login-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  #content {
-    display: flex;
     width: 100%;
-    justify-content: center;
   }
+  
+  
   main {
-    width: 90%;
-    margin-top: 80px;
+    margin-top: 100px;
   }
   
   button {
     margin-top: 12px;
     margin-bottom: 13px;
     border: 2px solid #FFA620;
-    background-color: white;
+    background-color: #FFA620;
     height: 48px;
     width: 150px;
     font-size: 24px;
-    border-radius: 5px;
+    border-radius: 15px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
     color: #3C3C3C;
   }
   
@@ -681,20 +742,73 @@ input {
     font-family: "Roboto";
     font-weight: 200;
     font-size: 48px;
-    color: #3C3C3C;
+    color: #FFA620;
   }
 
   h2 {
-    color: #3C3C3C;
+    color: white;
   }
 
   h3 {
-    color: #3C3C3C;
+    color: white;
   }
 
   p {
-    font-size: 20px;
+    font-size: 18px;
     color: white;
+  }
+  
+  .input-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .input-workout-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  
+  
+  input {
+    width: 200px;
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+  
+  header {
+    height: 90px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 500;
+    /* box-shadow: 0px 2px 10px #b9b9b9; */
+  }
+  header i {
+    position:inherit;
+    top: 2%;
+    left: 90%;
+    font-size: 200px;
+    z-index: 100;
+  }
+
+  .image-text-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
   }
 
   #about-section {
@@ -704,7 +818,7 @@ input {
   }
 
   #about-section img {
-    width: 20%;
+    width: 80%;
     padding: 0%;
     border-radius: 5px;
     border: 2px solid #3C3C3C;
@@ -719,106 +833,55 @@ input {
     border: 2px solid #3c3c3c;
     padding-left: 5px;
   }
-
-  .image-text-container {
-    margin-bottom: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .image-text {
-    width: 60%;
-  }
-
-  #about-text {
-    width: 100%;
-    background-color: #FFA620;
-    color: #3C3C3C;
-    border-radius: 5px;
-    border: 2px solid #3C3C3C;
-  }
-  
-  .input-container {
-    /* margin-top: 30px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .input-workout-container {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-  }
-
-  
-  
-  input {
-    width: 200px;
-    font-size: 20px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid black;
-  }
-  
-  header {
-    height: 60px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* padding: 0px 5%; */
-    position: fixed;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    top: 0;
-    left: 0;
-    z-index: 500;
-  }
-  header i {
-    margin-right: 5%;
-    /* position:inherit;
-    top: 2%;
-    left: 85%;
-    font-size: 48px;
-    color: #DBD3AD; */
-    z-index: 100;
-  }
-  header img {
-    margin-left: 5%;
-  }
   
   .workout-input-container {
     position: absolute;
     display: flex;
-    top: 50%;
+    top: 450px;
     left: 50%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: all 0.5s ease-in-out;
-    height: 200px;
-    width: 400px;
+    height: 400px;
+    width: 500px;
     margin-top: -200px;
-    margin-left: -200px;
-    background: white;
+    margin-left: -250px;
+    background: #3c3c3c;
     padding-top: 0px;
-    z-index: 5;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.8);
-    border-radius: 5px;
+    z-index: 100;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.8);
+    border-radius: 15px;
+  }
+
+  .workout-input-container h2 {
+    color: white;
+    font-size: 36px;
+  }
+
+
+  table {
+    border-radius: 15px;
+    color: white;
   }
 
   #hide-workout {
-    position: absolute;
-    left: 200%;
+    position: fixed;
+    top: -500%;
+    left: 0;
+    transition: all 0.5s ease-in-out;
+  }
 
+  .invisible {
+    position: fixed;
+    top: -150%;
+    /* visibility: hidden; */
   }
   
   #hidden {
     position: fixed;
-    top: 0;
-    right: -100%;
+    top: -500%;
+    left: 0;
     transition: all 0.5s ease-in-out;
   }
   
@@ -826,13 +889,12 @@ input {
   .nav-menu {
     transition: all 0.5s ease;
     background-color: #3C3C3C;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.8);
     padding-top: 80px;
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     height: 100vh;
-    width: 20%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -843,9 +905,9 @@ input {
     text-decoration: none;
     color: #FFA620;
     padding: 5px;
-    font-size: 2vw;
+    font-size: 28px;
     margin-top: 15px;
-    border-radius: 5px;
+    border-radius: 15px;
     z-index: 120;
   }
   
@@ -859,7 +921,7 @@ input {
     height: 50px;
     width: 50px;
     padding: 0;
-    padding-left: 5px;
+    margin-left: 15px;
   }
   
   
@@ -869,10 +931,84 @@ input {
     width: 100%;
   }
   
+  #build-workout-page {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .centering-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .button-container-flex {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .button-container-flex button {
+    width: 120px;
+  }
+
+  .build-workout-container {
+    display: flex;
+    overflow-x: scroll;
+    width: 300px;
+  }
+
+  .build-workout-container::-webkit-scrollbar {
+    height: 5px;
+    border-radius: 5px;
+  }
+
+  .build-workout-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5pxpx;
+  }
+
+  .build-workout-container::-webkit-scrollbar-thumb {
+    background: #FFA620;
+  }
+
+  .build-workout-container::-webkit-scrollbar-thumb:hover {
+    background: #FFA620;
+  }
   
+  .build-day {
+    text-align: center;
+    margin: 0px 15px;
+    width: 300px;
+  }
   
   #page-title {
     z-index: 100;
+    color: #FFA620;
+  }
+
+  .program-container h2 {
+    color: white;
+  }
+
+  .sign-up-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .login-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .button-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .workout-input-container h2 {
@@ -885,18 +1021,29 @@ input {
   
   .week-container {
     margin-top: 20px;
+    padding-left: 15px;
     display: flex;
     align-items: center;
     background-color: #3c3c3c;
     border: 2px solid #3C3C3C;
-    border-radius: 5px;
+    border-radius: 15px;
     height: 50px;
     width: 100%;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
+  }
+
+  .current-day-container {
+    background-color: #3C3C3C;
+    border-radius: 15px;
+    margin-top: 10px;
+    padding: 5px 10px 15px 10px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
   }
   
   #week-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
   }
   
   #save-btn {
@@ -908,12 +1055,11 @@ input {
     padding: 0px 10px;
     color: #FFA620;
     transform: rotate(-90);
-    transition: all 0.3s ease;
+  
   }
   
   #rotate {
     transform: rotate(-90);
-    transition: all 0.3s ease;
   }
   form {
     margin-bottom: 30px;
@@ -927,22 +1073,16 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20vw;
-    margin: 15px 15px;
-  }
-  
-  #annoying-container {
-    width: 100%;
   }
   
   .day-of-week-container {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 30px;
+    height: 35px;
     font-size: 24px;
     border: 1px solid #3C3C3C;
-    border-radius: 5px;
+    border-radius: 15px;
     margin: 5px 0px;
     padding: 3px 0px;
   }
@@ -950,12 +1090,13 @@ input {
   .day-of-week-container i {
     font-size: 30px;
     padding: 0px 10px;
-    color: #3C3C3C;
+    color: white;
   }
   .day-of-week-container h3 {
     font-size: 24px;
     font-family: "roboto";
-    color: #3C3C3C;
+    color: white;
+    padding-left: 15px;
   }
   
   .daily-exercise-container {
@@ -965,15 +1106,22 @@ input {
     width: 100%;
     justify-content: space-between;
   }
+
+  input {
+    font-size: 28px;
+    width: 300px;
+  }
   
   .exercise-input {
-    font-size: 15px;
-    width: 130px;
+    font-size: 28px;
+    width: 140px;
+    margin-right: 5px;
   }
   
   .short-input {
-    font-size: 15px;
-    width: 50px;
+    font-size: 28px;
+    width: 100px;
+    margin-right: 5px;
   }
   
   .disclaimer-container {
@@ -981,62 +1129,56 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #3c3c3c;
-    /* border: 2px solid #3C3C3C; */
-    border-radius: 5px;
+    padding: 0px 5px;
+    border-radius: 15px;
     margin-bottom: 15px;
+    background-color: #3C3C3C;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
   }
   .disclaimer-container h2 {
-    background-color: #3C3C3C;
     color: #FFA620;
     text-align: center;
     width: 100%;
     margin: 0;
     margin-top: -1px;
     padding: 0;
-    border-bottom: 2px solid #3C3C3C;
+    padding-top: 5px;
   }
 
   #article-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .article-content {
-    width: 100%;
-    /* height: 100%; */
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
   }
   
   .article-card {
-    width: 300px;
-    /* height: 600px; */
-    border: 2px solid #3C3C3C;
-    border-radius: 5px;
-    margin: 0px 15px 15px 15px;
-  }
-  .article-button-container {
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    width: 48%;
+    border-radius: 15px;
+    margin-bottom: 15px;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0px 5px;
+    background-color: #3C3C3C;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
   }
   
   .article-card h2 {
     margin: 0;
-    padding: 2px;
+    padding: 5px;
     color: #3C3C3C;
     text-align: center;
-    margin-top: -1px;
     color: #f1f1f1;
-    background-color: #3C3C3C;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
     border-bottom: 2px solid #3C3C3C;
+  }
+
+  .article-content {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    justify-content: space-between;
   }
   
   .article-card a {
@@ -1049,41 +1191,46 @@ input {
     align-items: center;
   }
   .save-container i {
-    font-size: 28px;
+    font-size: 30px;
     color: #FFA620;
     padding: 5px;
   }
-  
-  .profile-container {
-    margin-top: 100px;
+
+  .article-button-container {
+    position: relative;
+    bottom: 0;
     width: 100%;
     display: flex;
     justify-content: space-around;
-    
+  }
+  
+  .profile-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .profile-container i {
-    font-size: 20vw;
+    font-size: 50vw;
     color: #FFA620;
   }
   .user-selection-container {
-    width: 30vw;
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
   }
   
   .user-selection-container a {
     text-align: center;
-    width: 33%;
+    width: 20%;
     font-size: 24px;
     text-decoration: none;
-    color: #3C3C3C;
+    color: #FFA620;
     padding: 5px 0;
     border-radius: 5px;
   }
-  .variable-container {
-    margin-top: 30px;
-  }
+  
   table {
     width: 100%;
     border: 1px solid #3C3C3C;

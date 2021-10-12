@@ -46,7 +46,7 @@ function FavWorkouts() {
   }
 
   return (
-    <div>
+    <div className="all-custom-container">
       <Display />
     </div>
   )
