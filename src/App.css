@@ -15,6 +15,22 @@ input {
     background-color: #303433;
   }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #303433;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFA620;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FFA620;
+}
+
   .show-workout {
     display: flex;
     justify-content: space-between;
@@ -116,15 +132,15 @@ input {
     font-family: "Roboto";
     font-weight: 200;
     font-size: 48px;
-    color: #3C3C3C;
+    color: #FFA620;
   }
 
   h2 {
-    color: #3C3C3C;
+    color: white;
   }
 
   h3 {
-    color: #3C3C3C;
+    color: white;
   }
 
   p {

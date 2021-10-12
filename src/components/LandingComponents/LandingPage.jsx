@@ -82,7 +82,7 @@ function LandingPage(props) {
   return (
     <div id='landing-page'>
       {/* //TODO Put this JSX into a seperate component so it doesn't reload each time you push a button. Oissibly use state and use the buttons tio change the state, then use if statements to select what is loaded onto the page. */}
-      <img src="./landscape.png" alt="" />
+      <img src="./whiteLogo.png" alt="" />
       
       <displaySignUp />
       <Switch>

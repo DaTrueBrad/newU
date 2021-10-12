@@ -3,7 +3,7 @@ import React from 'react'
 function About() {
   return (
     <div id='about-section'>
-      <h1 id='about-text'>About Us</h1>
+      <h1 id='page-title'>About Us</h1>
       <h2>Welcome to New U!</h2>
       <p>New U is an all-in-one workout planner and knowledge hub. Here you will be able to create and store workout programs so you can better track your progress and actually see results!</p>
       <div className="image-text-container">
