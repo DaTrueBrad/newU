@@ -265,6 +265,39 @@ input {
     transition: all 0.5s ease-in-out;
   }
 
+  .stat-input-container {
+    position: absolute;
+    display: flex;
+    top: 450px;
+    left: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+    height: 500px;
+    width: 300px;
+    margin-top: -250px;
+    margin-left: -150px;
+    background: #3c3c3c;
+    padding: 8px;
+    z-index: 100;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.8);
+    border-radius: 15px;
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 0px;
+  }
+
+  legend {
+    text-align: center;
+    color: #FFA620;
+    font-family: "Roboto";
+  }
+
   .invisible {
     position: fixed;
     top: -150%;
