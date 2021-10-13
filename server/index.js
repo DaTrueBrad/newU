@@ -27,6 +27,7 @@ app.post('/favoriteworkout', ctrl.favWorkout)
 app.post('/favoritearticle', ctrl.favArticle)
 // user endpoints
 app.get('/userStats', ctrl.getStats)
+app.put('/submitStats', ctrl.submitStats)
 
 //! this is a catch-all for the build environment
 app.get('/*', function (req, res) {

@@ -109,5 +109,19 @@ module.exports = {
   deleteWorkout: async (req, res) => {
     await sequelize.query(`DELETE FROM workouts WHERE id = ${req.body.id}`)
     res.status(200).send("success!")
+  },
+  submitStats: async (req, res) => {
+    const {squat_stat, bench_stat, deadlift_stat, bench_date, squat_date, deadlift_date, user} = req.body
+    await sequelize.query(`
+    UPDATE users
+    SET bench_stat = ${bench_stat},
+    squat_stat = ${squat_stat},
+    deadlift_stat = ${deadlift_stat},
+    bench_date = '${bench_date}',
+    squat_date = '${squat_date}',
+    deadlift_date = '${deadlift_date}'
+    WHERE id = ${user}
+    `)
+    res.status(200).send('success')
   }
 }
