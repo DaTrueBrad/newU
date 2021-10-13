@@ -44,7 +44,7 @@ function Header(props) {
             activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
             onClick={menuClick}>Favorites</NavLink>
           <NavLink
-            to='/dashboard/profile/user'
+            to='/dashboard/profile/stats'
             activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
             onClick={menuClick}>Profile</NavLink>
           <NavLink

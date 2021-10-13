@@ -294,6 +294,14 @@ input {
     align-items: center;
   }
 
+  .stats-page table {
+    padding: 5px;
+    background-color: #3c3c3c;
+    border-radius: 15px;
+    margin-top: 15px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
+  }
+
   fieldset {
     display: flex;
     flex-direction: column;
@@ -921,6 +929,56 @@ input {
     transition: all 0.5s ease-in-out;
   }
 
+  .stat-input-container {
+    position: absolute;
+    display: flex;
+    top: 450px;
+    left: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+    height: 600px;
+    width: 400px;
+    margin-top: -150px;
+    margin-left: -200px;
+    background: #3c3c3c;
+    padding: 8px;
+    z-index: 100;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.8);
+    border-radius: 15px;
+  }
+  .stat-input-container form {
+    margin-top: 15px;
+  }
+
+  .stats-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stats-page table {
+    padding: 5px;
+    background-color: #3c3c3c;
+    border-radius: 15px;
+    margin-top: 15px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 0px;
+  }
+
+  legend {
+    text-align: center;
+    color: #FFA620;
+    font-family: "Roboto";
+  }
+
   .invisible {
     position: fixed;
     top: -150%;
@@ -1261,9 +1319,14 @@ input {
   }
   
   .profile-container i {
-    font-size: 50vw;
+    font-size: 25vw;
     color: #FFA620;
   }
+
+  .user-info {
+    width: 60%;
+  }
+
   .user-selection-container {
     width: 100%;
     display: flex;
