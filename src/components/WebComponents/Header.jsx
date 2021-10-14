@@ -22,8 +22,8 @@ function Header(props) {
           <h2 id="page-title">Welcome, {localStorage.getItem("username")}</h2>
           <NavLink
             to='/dashboard/current'
-            activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
-            onClick={menuClick}>Current Program</NavLink>
+            activeStyle={{backgroundColor: '#FFA620', color: "white", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
+            onClick={menuClick}><i class='bx bxs-calendar-event'></i></NavLink>
           <NavLink
             to='/dashboard/build'
             activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}

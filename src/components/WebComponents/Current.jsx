@@ -315,7 +315,7 @@ function Current() {
 
   return (
     <div>
-      <h1 id="page-title">Let's Workout!</h1>
+      {/* <h1 id="page-title">Let's Workout!</h1> */}
       <Display />
     </div>
   )

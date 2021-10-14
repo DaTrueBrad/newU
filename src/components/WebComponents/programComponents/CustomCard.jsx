@@ -58,7 +58,7 @@ function CustomCard(props) {
               <div>
                 <i className='bx bxs-trash' style={{color: "red", fontSize: 36}} onClick={() => trashClick(props.element.id, props.element.name)}></i>
                 <i className='bx bx-star' style={{color: "#FFA620", fontSize: 36}} onClick={() => addFavorite(props.element.id)}></i>
-                <i className='bx bx-check-square' style={{color: "green", fontSize: 36}} onClick={() => selectCurrent(props.element.id)}></i>
+                <i className='bx bx-check-square' style={{color: "green", fontSize: 36}} onClick={() => selectCurrent(props.element.id, props.element.name)}></i>
               </div>
             </div>
           </div>

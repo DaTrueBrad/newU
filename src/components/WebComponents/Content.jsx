@@ -7,12 +7,13 @@ import Current from './Current'
 import Profile from './profileComponents/Profile'
 import Favorites from './favoriteComponents/Favorites'
 import Programs from './programComponents/Programs'
+import Footer from './Footer'
 
 function Content(props) {
    if (props.status) {
     return (
       <div id='content'>
-        <Header isLoggedIn={props.isLoggedIn}/>
+        {/* <Header isLoggedIn={props.isLoggedIn}/> */}
         <main>
         <Switch>
           <Route path='/dashboard/build'>
@@ -35,6 +36,7 @@ function Content(props) {
           </Route>
         </Switch>
         </main>
+        <Footer />
       </div>
     )
    } else {

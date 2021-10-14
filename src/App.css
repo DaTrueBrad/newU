@@ -198,6 +198,36 @@ input {
     border-radius: 5px;
     border: 1px solid black;
   }
+
+  footer {
+    background: #303433;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 75px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 3px 0px 10px rgba(0,0,0,0.5);
+  }
+
+  footer i {
+    font-size: 48px;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  footer a {
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    text-decoration: none;
+  }
   
   header {
     height: 75px;
