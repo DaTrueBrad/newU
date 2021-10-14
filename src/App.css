@@ -634,6 +634,10 @@ input {
     border-top-right-radius: 3px;
     border-bottom: 2px solid #3C3C3C;
   }
+
+  #article-container {
+    margin-top: 8px;
+  }
   
   .article-card a {
     color: #FFA620;
@@ -1284,6 +1288,7 @@ input {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-top: 15px;
   }
   
   .article-card {
