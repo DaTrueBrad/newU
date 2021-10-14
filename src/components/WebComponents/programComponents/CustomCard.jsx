@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import swal from 'sweetalert'
 
 function CustomCard(props) {
   const [hide, setHide] = useState(false)
@@ -15,12 +16,18 @@ function CustomCard(props) {
 
   const addFavorite = async (id) => {
     let user = +localStorage.getItem('user')
-    let bodyObj = {
-      id: id,
-      user: user
+    let db = await axios.get('/favoriteWorkoutExists', {params: {user: user, id: id}})
+    if((db.data[0]).length === 0) {
+      let bodyObj = {
+        id: id,
+        user: user
+      }
+      await axios.post('/favoriteworkout', bodyObj)
+      .then((res) => swal("Added to favorites!", "You can find your workout under the favorites page.", "success"))
+    } else {
+      swal("Already a Favorite!", "Cannot add it a second time.", 'error')
     }
-    await axios.post('/favoriteworkout', bodyObj)
-    .then((res) => console.log(res.data))
+    
   }
 
   const deleteWorkout = async (id) => {

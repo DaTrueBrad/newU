@@ -12,7 +12,9 @@ app.use(cors());
 app.use(express.static(path.resolve(__dirname, "../build")));
 
 // Endpoints
-app.get("/article", ctrl.getArticles);
+// user endpoints
+app.get('/userStats', ctrl.getStats)
+app.put('/submitStats', ctrl.submitStats)
 app.post('/users', ctrl.newUser)
 app.post('/login', ctrl.login)
 app.post('/workouts', ctrl.postWorkout)
@@ -20,16 +22,25 @@ app.get('/workouts', ctrl.getCurrent)
 app.delete('/deleteWorkout', ctrl.deleteWorkout)
 app.get('/myworkouts', ctrl.getMyWorkouts)
 app.post('/currentworkout', ctrl.selectCurrent)
-//favorite endpoints
-app.get('/favoriteworkout', ctrl.getFavWorkouts)
+// article endpoints
+app.get("/article", ctrl.getArticles);
 app.get('/favoritearticles', ctrl.getFavArticles)
-app.post('/favoriteworkout', ctrl.favWorkout)
+app.get('/favoriteArticleExists', ctrl.testExistingArticles)
 app.post('/favoritearticle', ctrl.favArticle)
-// user endpoints
-app.get('/userStats', ctrl.getStats)
-app.put('/submitStats', ctrl.submitStats)
+app.delete('/removeFavoriteArticle', ctrl.removeFavArticle)
+// workout endpoints
+app.post('/workouts', ctrl.postWorkout)
+app.get('/workouts', ctrl.getCurrent)
+app.delete('/deleteWorkout', ctrl.deleteWorkout)
+app.get('/myworkouts', ctrl.getMyWorkouts)
+app.post('/currentworkout', ctrl.selectCurrent)
+app.get('/favoriteworkout', ctrl.getFavWorkouts)
+app.get('/favoriteWorkoutExists', ctrl.testExistingWorkouts)
+app.post('/favoriteworkout', ctrl.favWorkout)
+app.delete('/removeFavoriteWorkout', ctrl.removeFavWorkout)
 
-//! this is a catch-all for the build environment
+
+// this is a catch-all for the build environment
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });

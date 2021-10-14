@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import {NavLink} from 'react-router-dom'
 import Spinner from '../../Spinner'
+import swal from 'sweetalert'
 
 function FavWorkouts() {
   const [data, setData] = useState()
@@ -15,6 +16,17 @@ function FavWorkouts() {
   useEffect(() => {
     GetWorkouts()
   }, [])
+
+  const removeWorkout = async (id) => {
+    swal("Remove from Favorites?", "This action will remove this workout from your favorite tab.", "warning", {buttons: true, dangerMode: true})
+    .then((value) => {
+      if(value) {
+        let user = localStorage.getItem('user')
+        axios.delete('/removeFavoriteWorkout', {params: {user: user, id: id}})
+        .then((res) => window.location.reload(true))
+      }
+    })
+  }
 
 
   const Display = () => {
@@ -32,12 +44,10 @@ function FavWorkouts() {
               </div>
               <div>
                 <i className='bx bxs-trash' style={{color: "red", fontSize: 36}} ></i>
-                <i class='bx bx-minus-circle' style={{color: "#FFA620", fontSize: 36}}></i>
+                <i class='bx bx-minus-circle' style={{color: "#FFA620", fontSize: 36}}  onClick={() => removeWorkout(element.id)}></i>
                 <i className='bx bx-check-square' style={{color: "green", fontSize: 36}}></i>
               </div>
             </div>
-            
-            
           </div>
         )
       })

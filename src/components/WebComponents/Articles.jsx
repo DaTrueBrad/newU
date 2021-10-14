@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Spinner from '../Spinner'
 import FavArticles from './favoriteComponents/FavArticles'
+import swal from 'sweetalert'
 
   
 function Articles() {
@@ -17,12 +18,17 @@ function Articles() {
   }, [])
   const favArticle = async (id) => {
     let user = +localStorage.getItem('user')
-    let bodyObj = {
-      id: id,
-      user: user
+    let db = await axios.get('/favoriteArticleExists', {params: {user: user, id: id}})
+    if((db.data[0]).length === 0) {
+      let bodyObj = {
+        id: id,
+        user: user
+      }
+      await axios.post('/favoritearticle', bodyObj)
+      .then((res) => swal("Added to favorites!", "You can find this article under the favorites page.", "success"))
+    } else {
+      swal("Already a Favorite!", "Cannot add it a second time.", 'error')
     }
-    await axios.post('/favoritearticle', bodyObj)
-    .then((res) => console.log(res.data))
   }
     
   const Display = () => {

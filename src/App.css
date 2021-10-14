@@ -7,6 +7,34 @@ input {
   color: white;
 }
 
+.swal-overlay {
+  background-color: rgba(0,0,0,0.8);
+}
+.swal-modal {
+  background-color: #3c3c3c;
+  box-shadow: 0px 3px 10px black;
+}
+.swal-title, .swal-text {
+  color: white;
+}
+.swal-icon--success:before {
+  background-color: transparent;
+}
+.swal-icon--success:after {
+  background-color: transparent;
+}
+.swal-icon--success__hide-corners {
+  background-color: transparent;
+}
+.swal-button {
+  background-color: white;
+  color: #3c3c3c;
+}
+.swal-button--danger {
+  background-color: red;
+  color: white;
+}
+
 
 
 @media only screen and (max-width: 599px) {

@@ -60,6 +60,7 @@ function BuildWorkout() {
     console.log('this is what we build:', workout)
     axios.post('/workouts', workout)
     .then((res) => console.log(res.data))
+    window.location = "/dashboard/programs/custom"
   }
   
   return (

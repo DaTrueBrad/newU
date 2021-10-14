@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import {NavLink} from 'react-router-dom'
 import Spinner from '../../Spinner'
+import swal from 'sweetalert'
 
 function FavArticles() {
   const [data, setData] = useState()
@@ -15,6 +16,17 @@ function FavArticles() {
   useEffect(() => {
     GetArticles()
   }, [])
+
+  const removeArticle = async (id) => {
+    swal("Remove from Favorites?", "This action will remove this article from your favorite tab.", "warning", {buttons: true, dangerMode: true})
+    .then((value) => {
+      if(value) {
+        let user = localStorage.getItem('user')
+        axios.delete('/removeFavoriteArticle', {params: {user: user, id: id}})
+        .then((res) => window.location.reload(true))
+      } 
+    })
+  }
 
   const Display = () => {
     if(data === undefined) {
@@ -32,8 +44,7 @@ function FavArticles() {
               </div>
             <div className="article-button-container">
               <div className="save-container">
-                <p>Save</p>
-                <i class='bx bx-bookmark'></i>
+              <i class='bx bx-minus-circle' style={{color: "#FFA620", fontSize: 36}}  onClick={() => removeArticle(el.id)}></i>
               </div>
               <a href={el.url} target='_blank' rel="noreferrer"><button>View</button></a>
             </div>
