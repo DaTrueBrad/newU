@@ -4,14 +4,20 @@ import swal from 'sweetalert'
 
 function CustomCard(props) {
   const [hide, setHide] = useState(false)
-  const selectCurrent = async (id) => {
+
+  const selectCurrent = async (id, name) => {
     let user = +localStorage.getItem('user')
-    const body = {
-      id,
-      user
-    }
-    await axios.post('/currentworkout', body);
-    alert("You have changed your current program! Check it out on the 'Current' tab!")
+    swal(`Do you want to select ${name}?`, "Your app will begin to track this workout program", "warning", {buttons: true})
+    .then((value) => {
+      if(value) {
+        const body = {
+        id,
+        user
+        }
+        axios.post('/currentworkout', body)
+        window.location = '/dashboard/current'
+      }
+    })
   }
 
   const addFavorite = async (id) => {
@@ -27,16 +33,17 @@ function CustomCard(props) {
     } else {
       swal("Already a Favorite!", "Cannot add it a second time.", 'error')
     }
-    
   }
 
-  const deleteWorkout = async (id) => {
-    await axios.delete('/deleteWorkout', {data: {id: id}})
-    .then((res) => console.log(res.data))
-    window.location.reload(true)
-  }
-
-  const trashClick = () => {
+  const trashClick = (id, name) => {
+    swal(`Deleting ${name}`, "This action will delete this program, and cannot be undone.", "warning", {buttons: true, dangerMode: true})
+    .then((value) => {
+      if(value) {
+        axios.delete('/deleteWorkout', {data: {id: id}})
+        .then((res) => console.log(res.data))
+        window.location.reload(true)
+      } 
+    })
     setHide(!hide)
   }
 
@@ -49,16 +56,9 @@ function CustomCard(props) {
                 <h3>ID: {props.element.id}</h3>
               </div>
               <div>
-                <i className='bx bxs-trash' style={{color: "red", fontSize: 36}} onClick={() => trashClick()}></i>
+                <i className='bx bxs-trash' style={{color: "red", fontSize: 36}} onClick={() => trashClick(props.element.id, props.element.name)}></i>
                 <i className='bx bx-star' style={{color: "#FFA620", fontSize: 36}} onClick={() => addFavorite(props.element.id)}></i>
                 <i className='bx bx-check-square' style={{color: "green", fontSize: 36}} onClick={() => selectCurrent(props.element.id)}></i>
-                <div className="workout-input-container" id={`${hide ? "" : "hide-workout"}`}>
-                  <p>Are you sure you want to delete:</p>
-                  <h3>{props.element.name}</h3>
-                  <p>This will be gone forever.</p>
-                  <button onClick={() => deleteWorkout(props.element.id)}>Yes</button>
-                  <button onClick={() => setHide(!hide)}>No</button>
-                </div>
               </div>
             </div>
           </div>

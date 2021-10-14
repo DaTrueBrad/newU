@@ -28,6 +28,32 @@ function FavWorkouts() {
     })
   }
 
+  const selectCurrent = async (id, name) => {
+    let user = +localStorage.getItem('user')
+    swal(`Do you want to select ${name}?`, "Your app will begin to track this workout program.", "warning", {buttons: true})
+    .then((value) => {
+      if(value) {
+        const body = {
+        id,
+        user
+        }
+        axios.post('/currentworkout', body)
+        window.location = '/dashboard/current'
+      }
+    })
+  }
+
+  const trashClick = (id, name) => {
+    swal(`Deleting ${name}`, "This action will delete this program, and cannot be undone.", "warning", {buttons: true, dangerMode: true})
+    .then((value) => {
+      if(value) {
+        axios.delete('/deleteWorkout', {data: {id: id}})
+        .then((res) => console.log(res.data))
+        window.location.reload(true)
+      } 
+    })
+  }
+
 
   const Display = () => {
     if(data === undefined) {
@@ -43,9 +69,9 @@ function FavWorkouts() {
                 <h3>ID: {element.id}</h3>
               </div>
               <div>
-                <i className='bx bxs-trash' style={{color: "red", fontSize: 36}} ></i>
+                <i className='bx bxs-trash' style={{color: "red", fontSize: 36}} onClick={() => trashClick(element.id, element.name)}></i>
                 <i class='bx bx-minus-circle' style={{color: "#FFA620", fontSize: 36}}  onClick={() => removeWorkout(element.id)}></i>
-                <i className='bx bx-check-square' style={{color: "green", fontSize: 36}}></i>
+                <i className='bx bx-check-square' style={{color: "green", fontSize: 36}} onClick={() => selectCurrent(element.id, element.name)}></i>
               </div>
             </div>
           </div>
