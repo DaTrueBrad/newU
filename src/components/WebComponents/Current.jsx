@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 import Spinner from '../Spinner'
 
 let res = ""
-
+//todo Set this into a series of currentComponents that allow for dropdown functionality by sending data down the component tree
 function Current() {
   const [name, setName] = useState('')
   const [id, setId] = useState(0)

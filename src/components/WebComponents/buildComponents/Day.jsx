@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import { Collapse } from 'react-collapse'
-// import { useFormik } from "formik";
 
 
 function Day(props) {
@@ -22,7 +21,6 @@ function Day(props) {
     }
       dataArr[number] = object
       setNumber((number + 1))
-      console.log('New Attempt:', dataArr)
   }
   
   const submitHandler = () => {
@@ -31,18 +29,11 @@ function Day(props) {
       name: props.number,
       exercises: dataArr
     }
-
-    // let object = {
-    //   [props.index]: dataArr
-    // }
-    console.log('New test, before we send up:', object)
     setHideBtn(!hideBtn)
     props.onChange(object)
   }
 
   function DisplayInfo() {
-    // console.log(dataArr[1])
-    
     let arr = []
     for(let i = 1; i <= Object.keys(dataArr).length; i++) {
       console.log(dataArr[i])
@@ -54,10 +45,7 @@ function Day(props) {
         <td>{dataArr[i].weight}</td>
       </tr>)
     }
-
-    const exercises = arr.map((element, index) => {
-      return (element)
-    })
+    const exercises = arr.map((element, index) => element)
     return exercises
   }
 
@@ -93,7 +81,6 @@ function Day(props) {
             </tr>
           <DisplayInfo />
           </tbody>
-          
         </table>
         <div className="input-container">
           <section className="daily-exercise-container">
@@ -124,12 +111,10 @@ function Day(props) {
                 className='short-input'/>
             </div>
             <div className={hideBtn ? "invisible" : "button-container-flex"}>
-                <button onClick={addHandler}>Add</button>
-                <button onClick={submitHandler}>Save</button>
-
+              <button onClick={addHandler}>Add</button>
+              <button onClick={submitHandler}>Save</button>
             </div>
           </section>
-          
         </div>
       </Collapse>
     </div>

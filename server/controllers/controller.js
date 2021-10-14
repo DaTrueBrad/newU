@@ -43,15 +43,14 @@ module.exports = {
     //TODO FIgure out a way to hash the password the person sends in, compare it to one on file, and THEN log the user in.
     // const validUser = await Users.findOne({ where: { username: username } });
     const validUser = await sequelize.query(`SELECT * FROM users WHERE username='${username}'`)
-    console.log(validUser[0][0].password)
-    if (validUser) {
+    console.log(validUser[1].rowCount)
+    if (validUser[1].rowCount === 1) {
       if (bcrypt.compareSync(password, validUser[0][0].password)) {
         let object = {
           id: validUser[0][0].id,
           username: validUser[0][0].username
         }
         return res.status(200).send(object)
-        // return res.status(200).send((validUser[0][0].id).toString())
       } else {
         return res.status(500).send("Password Incorrect");
       }
@@ -60,7 +59,6 @@ module.exports = {
     }
   },
   postWorkout: async (req, res) => {
-    // console.log(req.body)
     console.log(typeof JSON.stringify(req.body))
     await Workouts.create({
       name: req.body.name,

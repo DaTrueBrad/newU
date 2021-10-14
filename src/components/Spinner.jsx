@@ -8,8 +8,6 @@ const override = css`
   border-color: #FFA620;`
 
 function Spinner(props) {
-  // let [loading, setLoading] = useState(props.loading);
-
   return (
     <div className="sweet-loading">
       <DotLoader color={'#FFA620'}  loading={props.loading} css={override} size={150} />

@@ -1,5 +1,7 @@
 import React from 'react'
 
+// This page contains the info about the web application functionality for potential users, and is just JSX.
+
 function About() {
   return (
     <div id='about-section'>

@@ -1,13 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { Collapse } from 'react-collapse'
 
 function SignUp() {
+  const [signUp, setSignUp] = useState(false);
   return (
-      <div className="input-container">
-        <input type="text" placeholder="Username"/>
-        <input type="password" placeholder="Password"/>
-        <input type="password" placeholder="Re-enter Password"/>
-        <button>Register</button>
-      </div>
+    <div className="sign-up-button">
+      <button onClick={() => setSignUp(!signUp)}>Sign Up</button>
+      <Collapse isOpened={signUp}>
+        <h1>testing</h1>
+      </Collapse>
+    </div>
   )
 }
 

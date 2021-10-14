@@ -3,7 +3,6 @@ import React, {useState} from 'react'
 import Week from './Week'
 
 function BuildWorkout() {
-  //All ov our variables that we use for the page
   const [userInput, setUserInput] = useState(0)
   const [days, setDays] = useState(1)
   const [isActive, setActive] = useState("false");
@@ -11,11 +10,8 @@ function BuildWorkout() {
   let newData = {}
 
   const changeName = (e) => name = e.target.value
-  
-  const eventHandler = (data) => {
-    console.log('Top Component:', data)
-    newData[`${data.name}`] = data
-  }
+
+  const eventHandler = (data) => newData[`${data.name}`] = data
   
 
   function RenderWeeks() {
@@ -35,14 +31,7 @@ function BuildWorkout() {
       
     return fields
     }
-
-  function daysHandler(e) {
-    if(e) {
-      setUserInput(e)
-    } else {
-      setUserInput(1)
-    }
-  }
+  const daysHandler = (e) => e ? setUserInput(e) : setUserInput(1)
 
   function buttonClick() {
     setDays(userInput)
@@ -51,13 +40,12 @@ function BuildWorkout() {
   } 
   
   function saveWorkout() {
-     let id = +localStorage.getItem('user')
+    let id = +localStorage.getItem('user')
     let workout = {
       name: name,
       data: newData,
       id: id
     }
-    console.log('this is what we build:', workout)
     axios.post('/workouts', workout)
     .then((res) => console.log(res.data))
     window.location = "/dashboard/programs/custom"
@@ -90,11 +78,7 @@ function BuildWorkout() {
         <RenderWeeks />
           <button onClick={saveWorkout} id='save-btn'>Save</button>
       </div>
-      
     </div>
-      
-    
-    
   )
 }
 

@@ -4,10 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 function Header(props) {
   const [isActive, setActive] = useState("false");
-
-  function menuClick() {
-    setActive(!isActive)
-  }
+  const menuClick = () => setActive(!isActive)
 
   function logout() {
     setActive(!isActive)

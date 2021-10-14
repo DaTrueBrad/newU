@@ -4,6 +4,10 @@ import React, {useState} from 'react'
 import { Collapse } from 'react-collapse'
 import { Route, Switch } from 'react-router'
 import About from './About'
+import swal from 'sweetalert'
+import SignUp from './SignUp'
+
+// This page is the initial landing page for users if they are not a user, or not logged in.
 
 // Formik registration functions
 const initialValues = {
@@ -11,7 +15,6 @@ const initialValues = {
   password: '',
   passwordTwo: ''
 }
-
 const onSubmit = (values) => {
   if(values.password === values.passwordTwo) {
     const bodyObj = {
@@ -22,7 +25,6 @@ const onSubmit = (values) => {
     .then((res) => alert("Success! Please log in.")) //We get the new user back to the front
   }
 }
-
 const validate = (values) => {
   const errors = {}
   if(!values.username) {
@@ -45,13 +47,9 @@ function LandingPage(props) {
   const [username, setusername] = useState('')
   const [password, setpassword] = useState('')
   
-  
-  function showSignup(e) {
-    setSignUp(!signUp)
-  }
-  function showLogin(e) {
-    setLogin(!login)
-  }
+  // these two functions allow the sign-up and login forms to be hidden or displayed.
+  const showSignup = (e) => setSignUp(!signUp)
+  const showLogin = (e) => setLogin(!login)
 
   const formik = useFormik({
     initialValues,
@@ -60,13 +58,10 @@ function LandingPage(props) {
   })
 
   //Login Functions
-  function loginChangeUser(e) {
-    setusername(e.target.value)
-  }
-  function loginChangePass(e) {
-    setpassword(e.target.value)
-  }
+  const loginChangeUser = (e) => setusername(e.target.value)
+  const loginChangePass = (e) => setpassword(e.target.value)
 
+  // This function will send the input data to the server, compare it with existing data, and if the user exists, allow them in. If there is an error, it will display the error in full.
   async function loginUser(e) {
     e.preventDefault()
     const bodyObj = {
@@ -75,23 +70,26 @@ function LandingPage(props) {
     };
     return axios.post('/login', bodyObj)
     .then((res) => {
-      console.log(res.data)
       localStorage.setItem('user', JSON.stringify(res.data.id))
       localStorage.setItem('username', res.data.username)
       props.isLoggedIn()
     })
+    .catch((err) => {
+      swal(`Error`, `${err.response.data}`, 'warning')
+    })
   }
+
+  //todo clean up this page by transferring all of the content for login and sign-up to their respective components
   return (
     <div id='landing-page'>
-      {/* //TODO Put this JSX into a seperate component so it doesn't reload each time you push a button. Oissibly use state and use the buttons tio change the state, then use if statements to select what is loaded onto the page. */}
       <img src="./whiteLogo.png" alt="" />
-      
       <displaySignUp />
       <Switch>
         <Route exact path='/'>
           <div className="button-container">
             <div className="sign-up-button">
               <button onClick={showSignup}>Sign Up</button>
+              {/* <SignUp /> */}
               <Collapse isOpened={signUp}>
                 <div className="input-container">
                   <form onSubmit={formik.handleSubmit}>
@@ -127,7 +125,7 @@ function LandingPage(props) {
                   
                 </div>
               </Collapse>
-            </div>
+             </div>
             <div className="login-button">
               <button onClick={showLogin}>Login</button>
               <Collapse isOpened={login}>
