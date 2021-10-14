@@ -1,6 +1,6 @@
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 
 input {
   background-color: #616463;
@@ -41,6 +41,11 @@ input {
   html {
     font-family: "Roboto";
     background-color: #303433;
+  }
+
+  #content {
+    margin-top: 0;
+    padding-top: 0;
   }
 
 ::-webkit-scrollbar {
@@ -125,6 +130,8 @@ input {
   
   .App {
     padding: 20px;
+    margin: 0;
+    padding-top: 0;
     background-color: #303433;
   }
   img {
@@ -135,7 +142,7 @@ input {
   
   
   main {
-    margin-top: 100px;
+    margin-top: 20px;
   }
   
   button {
@@ -835,9 +842,9 @@ input {
   }
   
   
-  main {
+  /* main {
     margin-top: 100px;
-  }
+  } */
   
   button {
     margin-top: 12px;

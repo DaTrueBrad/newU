@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer>
       <NavLink
-      to="/dashboard/programs"
+      to="/dashboard/programs/current"
       activeStyle={{backgroundColor: '#FFA620', color: "#3c3c3c", boxShadow: "0px 3px 10px rgba(0,0,0,0.8)"}}>
         <i class='bx bxs-calendar-event'></i>
       </NavLink>
