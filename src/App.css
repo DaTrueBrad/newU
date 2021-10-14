@@ -208,7 +208,7 @@ input {
   }
 
   footer {
-    background: #303433;
+    background: #3c3c3c;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -217,7 +217,7 @@ input {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    box-shadow: 3px 0px 10px rgba(0,0,0,0.5);
+    box-shadow: 1px 0px 5px rgba(0,0,0,0.5);
   }
 
   footer i {
@@ -225,6 +225,10 @@ input {
     color: white;
     margin: 0;
     padding: 0;
+  }
+
+  footer i:active {
+    color: #3c3c3c;
   }
 
   footer a {
