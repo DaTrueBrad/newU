@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import User from './User'
 import Stats from './Stats'
 import Settings from './Settings'
+import Logout from './Logout'
 
 function Profile() {
   return (
@@ -16,6 +17,7 @@ function Profile() {
         <div className="user-selection-container">
           {/* <NavLink to='/dashboard/profile/user' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5"} }>User</NavLink> */}
           <NavLink to='/dashboard/profile/stats' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5"}}>Stats</NavLink>
+          <NavLink to='/dashboard/profile/logout' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5"}}>Log Out</NavLink>
           {/* <NavLink to='/dashboard/profile/settings' activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5"}}>Settings</NavLink> */}
           
           </div>
@@ -27,8 +29,8 @@ function Profile() {
               <Route path='/dashboard/profile/stats'>
                 <Stats />
               </Route>
-              <Route path='/dashboard/profile/settings'>
-                <Settings />
+              <Route path='/dashboard/profile/logout'>
+                <Logout />
               </Route>
             </Switch>
           </div>
