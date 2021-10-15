@@ -13,7 +13,7 @@ function Content(props) {
    if (props.status) {
     return (
       <div id='content'>
-        {/* <Header isLoggedIn={props.isLoggedIn}/> */}
+        <Header isLoggedIn={props.isLoggedIn}/>
         <main>
         <Switch>
           <Route path='/dashboard/build'>

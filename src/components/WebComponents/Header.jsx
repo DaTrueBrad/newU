@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 
 function Header(props) {
-  const [isActive, setActive] = useState("false");
+  const [isActive, setActive] = useState("true");
   const menuClick = () => setActive(!isActive)
 
   function logout() {
@@ -16,14 +16,14 @@ function Header(props) {
   return (
     <div>
       <header>
-        <img src="../../logo.png" alt="" />
-        <i className='bx bx-menu' onClick={() => menuClick()} style={{color: `${isActive ? "" : "#FFA620"}`}}></i>
+        <img src="../../whiteLogo.png" alt="" />
+        <i className='bx bx-menu' onClick={() => menuClick()} ></i>
         <nav className="nav-menu" id={`${isActive ? "hidden" : ""}`}>
-          <h2 id="page-title">Welcome, {localStorage.getItem("username")}</h2>
+          <h2 id="page-title">Welcome,<br></br> {localStorage.getItem("username")}</h2>
           <NavLink
-            to='/dashboard/current'
-            activeStyle={{backgroundColor: '#FFA620', color: "white", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
-            onClick={menuClick}><i class='bx bxs-calendar-event'></i></NavLink>
+            to='/dashboard/programs/current'
+            activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
+            onClick={menuClick}>Programs</NavLink>
           <NavLink
             to='/dashboard/build'
             activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
@@ -32,10 +32,6 @@ function Header(props) {
             to='/dashboard/articles'
             activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
             onClick={menuClick}>Articles</NavLink>
-          <NavLink
-            to='/dashboard/programs/custom'
-            activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
-            onClick={menuClick}>Programs</NavLink>
           <NavLink
             to='/dashboard/favorites/programs'
             activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
