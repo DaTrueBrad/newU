@@ -22,7 +22,8 @@ const onSubmit = (values) => {
       password: values.password
     }
     axios.post('/users', bodyObj)
-    .then((res) => alert("Success! Please log in.")) //We get the new user back to the front
+    .then((res) => swal("Success! Please log in.")) //We get the new user back to the front
+    .catch((err) => swal("Oops!", "Username is taken, please try again."))
   }
 }
 const validate = (values) => {

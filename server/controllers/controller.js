@@ -18,7 +18,7 @@ module.exports = {
   newUser: async (req, res) => {
     const {username, password} = req.body
     console.log(username)
-
+    //todo add a validation to ensure the username is not already taken.
     //hash password
     const salt = bcrypt.genSaltSync(5)
     const passwordHash = bcrypt.hashSync(password, salt)
@@ -31,6 +31,7 @@ module.exports = {
       squat_stat: null,
       deadlift_stat: null,
     })
+    //todo perform a query to send back the id and name of the person registering, so we can immediately save them to browser and log them in
     if (newUser) {
       console.log(newUser)
       return res.status(200).send(newUser)
@@ -40,8 +41,6 @@ module.exports = {
   },
   login: async (req, res) => {
     const {username, password} = req.body
-    //TODO FIgure out a way to hash the password the person sends in, compare it to one on file, and THEN log the user in.
-    // const validUser = await Users.findOne({ where: { username: username } });
     const validUser = await sequelize.query(`SELECT * FROM users WHERE username='${username}'`)
     console.log(validUser[1].rowCount)
     if (validUser[1].rowCount === 1) {
