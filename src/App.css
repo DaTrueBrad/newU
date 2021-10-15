@@ -1385,6 +1385,7 @@ input {
   
   .article-card a {
     color: #FFA620;
+    word-wrap: break-word;
   }
   
   .save-container {
