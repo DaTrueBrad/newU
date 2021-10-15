@@ -50,7 +50,7 @@ function BuildWorkout() {
     .then((res) => console.log(res.data))
     window.location = "/dashboard/programs/custom"
   }
-  
+    //todo change input min max to a variable that is referenced
   return (
     <div id='build-workout-page'>
       <h1 id='page-title'>Build Program</h1>

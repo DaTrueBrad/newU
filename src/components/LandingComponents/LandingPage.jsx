@@ -10,43 +10,49 @@ import SignUp from './SignUp'
 // This page is the initial landing page for users if they are not a user, or not logged in.
 
 // Formik registration functions
-const initialValues = {
-  username: '',
-  password: '',
-  passwordTwo: ''
-}
-const onSubmit = (values) => {
-  if(values.password === values.passwordTwo) {
-    const bodyObj = {
-      username: values.username,
-      password: values.password
-    }
-    axios.post('/users', bodyObj)
-    .then((res) => swal("Success! Please log in.")) //We get the new user back to the front
-    .catch((err) => swal("Oops!", "Username is taken, please try again."))
-  }
-}
-const validate = (values) => {
-  const errors = {}
-  if(!values.username) {
-    errors.username = "Username Required"
-  } else if(!/^[a-z0-9_-]{3,16}$/i.test(values.username)) {
-    errors.username = "Must be between 3-16 characters, alphanumeric, and can include '-' or '_'."
-  }
-  if(!values.password) {
-    errors.password = "Password Required"
-  } else if(values.password != values.passwordTwo) {
-    errors.password = "Passwords must match"
-    errors.passwordTwo = "Passwords must match"
-  }
-  return errors
-}
+
 
 function LandingPage(props) {
   const [signUp, setSignUp] = useState(false);
   const [login, setLogin] = useState(false)
   const [username, setusername] = useState('')
   const [password, setpassword] = useState('')
+
+  const initialValues = {
+    username: '',
+    password: '',
+    passwordTwo: ''
+  }
+  const onSubmit = (values) => {
+    if(values.password === values.passwordTwo) {
+      const bodyObj = {
+        username: values.username,
+        password: values.password
+      }
+      axios.post('/users', bodyObj)
+      .then((res) => {
+        localStorage.setItem('user', res.data[0][0].id)
+        localStorage.setItem('username', res.data[0][0].username)
+        props.isLoggedIn()
+      })
+      .catch((err) => swal("Oops!", err.response.data))
+    }
+  }
+  const validate = (values) => {
+    const errors = {}
+    if(!values.username) {
+      errors.username = "Username Required"
+    } else if(!/^[a-z0-9_-]{3,16}$/i.test(values.username)) {
+      errors.username = "Must be between 3-16 characters, alphanumeric, and can include '-' or '_'."
+    }
+    if(!values.password) {
+      errors.password = "Password Required"
+    } else if(values.password != values.passwordTwo) {
+      errors.password = "Passwords must match"
+      errors.passwordTwo = "Passwords must match"
+    }
+    return errors
+  }
   
   // these two functions allow the sign-up and login forms to be hidden or displayed.
   const showSignup = (e) => setSignUp(!signUp)

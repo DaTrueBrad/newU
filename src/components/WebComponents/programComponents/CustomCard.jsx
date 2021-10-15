@@ -15,7 +15,7 @@ function CustomCard(props) {
         user
         }
         axios.post('/currentworkout', body)
-        window.location = '/dashboard/current'
+        window.location = '/dashboard/programs/'
       }
     })
   }

@@ -1,0 +1,35 @@
+import React, {useState} from 'react'
+import { Collapse } from 'react-collapse'
+import CurrentDay from './CurrentDay'
+
+function CurrentWeek(props) {
+  const [isActive, setActive] = useState(false);
+  let i = props.index
+  let data = props.data
+  console.log("week:", props.data)
+  
+  const Display = () => {
+    let arr = []
+    for (let j = 0; j < Object.keys(data[`Week_${i}`]['days']).length; j++) {
+      arr.push(
+        <Collapse isOpened={isActive}>
+          <CurrentDay data={props.data} index={props.index} j={j}/>
+        </Collapse>
+      )
+    }
+    return arr
+  }
+  
+
+  return (
+    <div className="weeks-workouts">
+      <div className='week-container' onClick={() => setActive(!isActive)}>
+        <h2>Week {props.index}</h2>
+      </div>
+      <Display />
+    </div>
+    
+  )
+}
+
+export default CurrentWeek
