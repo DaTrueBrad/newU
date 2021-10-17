@@ -22,7 +22,8 @@ module.exports = {
     res.status(200).send(workouts)
   },
   selectCurrent: async (req, res) => {
-    const current = await Users.update({current: req.body.id}, {where: {id: req.body.user}})
+    // const current = await Users.update({current: req.body.id}, {where: {id: req.body.user}})
+    await sequelize.query(`UPDATE users SET current = ${req.body.id} WHERE id = ${req.body.user}`)
     res.status(200).send('success')
   },
   deleteWorkout: async (req, res) => {

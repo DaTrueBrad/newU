@@ -27,7 +27,7 @@ function App() {
         </Route>
         <Route path="/">
           {/* <LandingPage  isLoggedIn={isLoggedIn}/> */}
-          {isLoggedIn ? <Redirect to='/dashboard/programs/current' /> : <LandingPage isLoggedIn={setStatus}/>}
+          {isLoggedIn ? <Redirect to='/dashboard/programs/' /> : <LandingPage isLoggedIn={setStatus}/>}
         </Route>
       </Switch>
     </div>

@@ -21,7 +21,7 @@ function Header(props) {
         <nav className="nav-menu" id={`${isActive ? "hidden" : ""}`}>
           <h2 id="page-title">Welcome,<br></br> {localStorage.getItem("username")}</h2>
           <NavLink
-            to='/dashboard/programs/current'
+            to='/dashboard/programs/'
             activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
             onClick={menuClick}>Programs</NavLink>
           <NavLink
@@ -33,11 +33,11 @@ function Header(props) {
             activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
             onClick={menuClick}>Articles</NavLink>
           <NavLink
-            to='/dashboard/favorites/programs'
+            to='/dashboard/favorites/'
             activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
             onClick={menuClick}>Favorites</NavLink>
           <NavLink
-            to='/dashboard/profile/stats'
+            to='/dashboard/profile/'
             activeStyle={{backgroundColor: '#FFA620', color: "#3C3C3C", boxShadow: "0px 3px 10px rgba(0,0,0,0.5)"}}
             onClick={menuClick}>Profile</NavLink>
           <NavLink

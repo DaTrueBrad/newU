@@ -12,23 +12,21 @@ function CurrentWeek(props) {
   const Display = () => {
     let arr = []
     for (let j = 0; j < Object.keys(data[`Week_${i}`]['days']).length; j++) {
-      arr.push(
-        <Collapse isOpened={isActive}>
-          <CurrentDay data={props.data} index={props.index} j={j}/>
-        </Collapse>
-      )
+      arr.push(<CurrentDay data={props.data} index={props.index} j={j}/>)
     }
     return arr
   }
   
 
   return (
-    <div className="weeks-workouts">
+    <div className="collapse-container">
       <div className='week-container' onClick={() => setActive(!isActive)}>
         <ArrowDirection />
         <h2>Week {props.index}</h2>
       </div>
-      <Display />
+      <Collapse isOpened={isActive}>
+        <Display />
+      </Collapse>
     </div>
     
   )
