@@ -7,7 +7,8 @@ function CurrentWeek(props) {
   let i = props.index
   let data = props.data
   console.log("week:", props.data)
-  
+  const ArrowDirection = () => isActive ? <i className='bx bxs-down-arrow' ></i> : <i className='bx bxs-right-arrow'></i>
+
   const Display = () => {
     let arr = []
     for (let j = 0; j < Object.keys(data[`Week_${i}`]['days']).length; j++) {
@@ -24,6 +25,7 @@ function CurrentWeek(props) {
   return (
     <div className="weeks-workouts">
       <div className='week-container' onClick={() => setActive(!isActive)}>
+        <ArrowDirection />
         <h2>Week {props.index}</h2>
       </div>
       <Display />
