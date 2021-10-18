@@ -1,66 +1,74 @@
-import React, {useState} from 'react'
-import { Collapse } from 'react-collapse'
+import React, { useState } from "react";
+import { Collapse } from "react-collapse";
 
+// This component is tricky. Each function has its own unique function (obviously) so read through carefully.
 
 function Day(props) {
   const [isActive, setActive] = useState(false);
-  const [dataArr] = useState({})
-  const [hideBtn, setHideBtn] = useState(false)
-  const [exerciseInput, setExerciseInput] = useState('')
-  const [setsInput, setSetsInput] = useState(0)
-  const [repsInput, setRepInput] = useState(0)
-  const [weightInput, setWeightInput] = useState(0)
-  const [number, setNumber] = useState(1)
+  const [dataArr] = useState({});
+  const [hideBtn, setHideBtn] = useState(false);
+  const [exerciseInput, setExerciseInput] = useState("");
+  const [setsInput, setSetsInput] = useState(0);
+  const [repsInput, setRepInput] = useState(0);
+  const [weightInput, setWeightInput] = useState(0);
+  const [number, setNumber] = useState(1);
 
+  // We make each exercise an object, set the data of the particular exercise to dataArr.number, which will create a new obejct inside the data arr just for that object. THis allows us to track which exercise is first (1) then second, third, so on.
   const addHandler = () => {
     let object = {
-        exercise: exerciseInput,
-        sets: setsInput,
-        reps: repsInput,
-        weight: weightInput,
-    }
-      dataArr[number] = object
-      setNumber((number + 1))
-  }
-  
+      exercise: exerciseInput,
+      sets: setsInput,
+      reps: repsInput,
+      weight: weightInput,
+    };
+    dataArr[number] = object;
+    setNumber(number + 1);
+  };
+  // THis handles the pushing of data upward into the days of week component, into the week component.
   const submitHandler = () => {
-    console.log(props.index)
+    console.log(props.index);
     let object = {
       name: props.number,
-      exercises: dataArr
-    }
-    setHideBtn(!hideBtn)
-    props.onChange(object)
-  }
-
+      exercises: dataArr,
+    };
+    setHideBtn(!hideBtn);
+    props.onChange(object);
+  };
+  // this is a simple function allowing the display of exercises alread input by the user.
   function DisplayInfo() {
-    let arr = []
-    for(let i = 1; i <= Object.keys(dataArr).length; i++) {
-      console.log(dataArr[i])
+    let arr = [];
+    for (let i = 1; i <= Object.keys(dataArr).length; i++) {
+      console.log(dataArr[i]);
       arr.push(
-      <tr>
-        <td>{dataArr[i].exercise}</td>
-        <td>{dataArr[i].sets}</td>
-        <td>{dataArr[i].reps}</td>
-        <td>{dataArr[i].weight}</td>
-      </tr>)
+        <tr>
+          <td>{dataArr[i].exercise}</td>
+          <td>{dataArr[i].sets}</td>
+          <td>{dataArr[i].reps}</td>
+          <td>{dataArr[i].weight}</td>
+        </tr>
+      );
     }
-    const exercises = arr.map((element, index) => element)
-    return exercises
+    const exercises = arr.map((element, index) => element);
+    return exercises;
   }
 
-  const ArrowDirection = () => isActive ? <i className='bx bxs-down-arrow' ></i> : <i className='bx bxs-right-arrow'></i>
-  const setVisability = (e) => setActive(!isActive)
+  const ArrowDirection = () =>
+    isActive ? (
+      <i className="bx bxs-down-arrow"></i>
+    ) : (
+      <i className="bx bxs-right-arrow"></i>
+    );
+  const setVisability = (e) => setActive(!isActive);
 
   function inputChange(e) {
-    if(e.target.name.includes('exercise')) {
-      setExerciseInput(e.target.value)
-    } else if(e.target.name === 'sets') {
-      setSetsInput(e.target.value)
-    } else if(e.target.name === 'reps') {
-      setRepInput(e.target.value)
+    if (e.target.name.includes("exercise")) {
+      setExerciseInput(e.target.value);
+    } else if (e.target.name === "sets") {
+      setSetsInput(e.target.value);
+    } else if (e.target.name === "reps") {
+      setRepInput(e.target.value);
     } else {
-      setWeightInput(e.target.value)
+      setWeightInput(e.target.value);
     }
   }
 
@@ -79,7 +87,7 @@ function Day(props) {
               <td>Reps</td>
               <td>Weight</td>
             </tr>
-          <DisplayInfo />
+            <DisplayInfo />
           </tbody>
         </table>
         <div className="input-container">
@@ -90,25 +98,29 @@ function Day(props) {
                 name={`${props.element} exercise #${number}`}
                 onChange={inputChange}
                 placeholder="Exercise Name"
-                className='exercise-input'/>
+                className="exercise-input"
+              />
               <input
                 type="number"
                 name="sets"
                 onChange={inputChange}
-                placeholder="Sets" 
-                className='short-input'/>
+                placeholder="Sets"
+                className="short-input"
+              />
               <input
                 type="number"
                 name="reps"
                 onChange={inputChange}
                 placeholder="Reps"
-                className='short-input'/>
+                className="short-input"
+              />
               <input
                 type="number"
                 name="weight"
                 onChange={inputChange}
                 placeholder="Weight"
-                className='short-input'/>
+                className="short-input"
+              />
             </div>
             <div className={hideBtn ? "invisible" : "button-container-flex"}>
               <button onClick={addHandler}>Add</button>
@@ -118,7 +130,7 @@ function Day(props) {
         </div>
       </Collapse>
     </div>
-  )
+  );
 }
 
-export default Day
+export default Day;

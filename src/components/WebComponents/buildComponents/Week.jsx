@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import {Collapse} from "react-collapse"
 import DaysOfWeek from './DaysOfWeek'
 
+// This component is mostly used for organizing information in a collapsable Week container, which will contain the days of the week. It is also used for taking the information passed up to it, adding it to an object, then passing it onward.
+
 function Week(props) {
   const [isActive, setActive] = useState(false);
   const [hideBtn, setHideBtn] = useState(false)

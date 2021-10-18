@@ -1,6 +1,8 @@
 import React from 'react'
 import Day from "./Day"
 
+// This component creates seven days of the week, and each day gets a value of 0-6 based on the index value (we use this later to parse through the info during the display function in the Current component)
+
 function DaysOfWeek(props) {
   const eventhandler = (data) => props.onChange(data)
 

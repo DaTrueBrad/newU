@@ -3,13 +3,16 @@ import React, {useEffect, useState} from 'react'
 import Spinner from '../../Spinner'
 import CurrentWeek from './CurrentWeek'
 
+// This whole component tree is very complicated, my best tip is to keep track of where the state of data is going. We cycle through the workout JSON that we requested from the server, and display that info for the user to track. Similar to how the BuildWorkout tree operates.
+
 let res = ""
-//todo Set this into a series of currentComponents that allow for dropdown functionality by sending data down the component tree
+
 function Current() {
   const [name, setName] = useState('')
   const [id, setId] = useState(0)
   const [data, setData] = useState()
 
+  // This function will get the current_workout JSON for the user that is logged in.
   const getWorkout = async () => {
     let id = localStorage.getItem('user')
     res = await axios.get('/workouts', {params: {id: id}})
@@ -23,280 +26,11 @@ function Current() {
   useEffect(() => {
     getWorkout()
   }, [])
-
+  // Similar to the BuildWorkout component, this will create multiple CurrentWeek components based on how many weeks are in the workout program. Each one will become their own collapsable container.
   function RenderWorkout() {
     let arr = []
     for (let i = 1; i <= Object.keys(data).length; i++) {
-      arr.push (
-        <CurrentWeek index={i} data={data}/>
-        // <div className='week-container'>
-        //   <h2>Week {i}</h2>
-        // </div>
-      )
-      // for (let j = 0; j < Object.keys(data[`Week_${i}`]['days']).length; j++) { 
-      //   switch (Object.keys(data[`Week_${i}`]['days'])[j]) {
-      //     case '0':
-      //       let monArr = []
-      //       for(let x = 1; x <= Object.keys(data[`Week_${i}`]['days'][0]).length; x++) {
-      //         let day = data[`Week_${i}`]['days'][0][x]
-      //         monArr.push(
-      //           <tr>
-      //             <td>{day.exercise}</td>
-      //             <td>{day.sets}</td>
-      //             <td>{day.reps}</td>
-      //             <td>{day.weight}</td>
-      //           </tr>
-      //         )
-      //       }
-      //       arr.push(
-      //         <div className="current-day-container">
-      //           <div className="day-of-week-container">
-      //             <h3>Monday</h3>
-      //           </div>
-      //           <table>
-      //             <tbody>
-      //               <tr>
-      //                 <th>Exercise</th>
-      //                 <th>Sets</th>
-      //                 <th>Reps</th>
-      //                 <th>Weight</th>
-      //               </tr>
-      //               {monArr.map((el, index) => el)}
-      //             </tbody>
-      //           </table>
-      //         </div>
-      //       )
-      //       break;
-      //     case '1':
-      //       let tueArr = []
-      //       for(let x = 1; x <= Object.keys(data[`Week_${i}`]['days'][1]).length; x++) {
-      //         let day = data[`Week_${i}`]['days'][1][x]
-      //         tueArr.push(
-      //           <tr>
-      //             <td>{day.exercise}</td>
-      //             <td>{day.sets}</td>
-      //             <td>{day.reps}</td>
-      //             <td>{day.weight}</td>
-      //           </tr>
-      //         )
-      //       }
-      //       arr.push(
-      //         <div className="current-day-container">
-      //           <div className="day-of-week-container">
-      //             <h3>Tuesday</h3>
-      //           </div>
-      //           <table>
-      //             <tbody>
-      //               <tr>
-      //                 <th>Exercise</th>
-      //                 <th>Sets</th>
-      //                 <th>Reps</th>
-      //                 <th>Weight</th>
-      //               </tr>
-      //               {tueArr.map((el, index) => el)}
-      //             </tbody>
-      //           </table>
-      //         </div>
-      //       )
-            
-      //       break;
-      //     case '2':
-      //       let wedArr = []
-      //       for(let x = 1; x <= Object.keys(data[`Week_${i}`]['days'][2]).length; x++) {
-      //         let day = data[`Week_${i}`]['days'][2][x]
-      //         wedArr.push(
-      //           <tr>
-      //             <td>{day.exercise}</td>
-      //             <td>{day.sets}</td>
-      //             <td>{day.reps}</td>
-      //             <td>{day.weight}</td>
-      //           </tr>
-      //         )
-      //       }
-      //       arr.push(
-      //         <div className="current-day-container">
-      //           <div className="day-of-week-container">
-      //             <h3>Wednesday</h3>
-      //           </div>
-      //           <table>
-      //             <tbody>
-      //               <tr>
-      //                 <th>Exercise</th>
-      //                 <th>Sets</th>
-      //                 <th>Reps</th>
-      //                 <th>Weight</th>
-      //               </tr>
-      //               {wedArr.map((el, index) => el)}
-      //             </tbody>
-      //           </table>
-      //         </div>
-      //       )
-            
-      //       break;
-      //     case '3':
-      //       let thurArr = []
-      //       for(let x = 1; x <= Object.keys(data[`Week_${i}`]['days'][3]).length; x++) {
-      //         let day = data[`Week_${i}`]['days'][3][x]
-      //         thurArr.push(
-      //           <tr>
-      //             <td>{day.exercise}</td>
-      //             <td>{day.sets}</td>
-      //             <td>{day.reps}</td>
-      //             <td>{day.weight}</td>
-      //           </tr>
-      //         )
-      //       }
-      //       arr.push(
-      //         <div className="current-day-container">
-      //           <div className="day-of-week-container">
-      //             <h3>Thursday</h3>
-      //           </div>
-      //           <table>
-      //             <tbody>
-      //               <tr>
-      //                 <th>Exercise</th>
-      //                 <th>Sets</th>
-      //                 <th>Reps</th>
-      //                 <th>Weight</th>
-      //               </tr>
-      //               {thurArr.map((el, index) => el)}
-      //             </tbody>
-      //           </table>
-      //         </div>
-      //       )
-            
-      //       break;
-      //     case '4':
-      //       let friArr = []
-      //       for(let x = 1; x <= Object.keys(data[`Week_${i}`]['days'][4]).length; x++) {
-      //         let day = data[`Week_${i}`]['days'][4][x]
-      //         friArr.push(
-      //           <tr>
-      //             <td>{day.exercise}</td>
-      //             <td>{day.sets}</td>
-      //             <td>{day.reps}</td>
-      //             <td>{day.weight}</td>
-      //           </tr>
-      //         )
-      //       }
-      //       arr.push(
-      //         <div className="current-day-container">
-      //           <div className="day-of-week-container">
-      //             <h3>Friday</h3>
-      //           </div>
-      //           <table>
-      //             <tbody>
-      //               <tr>
-      //                 <th>Exercise</th>
-      //                 <th>Sets</th>
-      //                 <th>Reps</th>
-      //                 <th>Weight</th>
-      //               </tr>
-      //               {friArr.map((el, index) => el)}
-      //             </tbody>
-      //           </table>
-      //         </div>
-      //       )
-            
-      //       break;
-      //     case '5':
-      //       let satArr = []
-      //       for(let x = 1; x <= Object.keys(data[`Week_${i}`]['days'][5]).length; x++) {
-      //         let day = data[`Week_${i}`]['days'][5][x]
-      //         satArr.push(
-      //           <tr>
-      //             <td>{day.exercise}</td>
-      //             <td>{day.sets}</td>
-      //             <td>{day.reps}</td>
-      //             <td>{day.weight}</td>
-      //           </tr>
-      //         )
-      //       }
-      //       arr.push(
-      //         <div className="current-day-container">
-      //           <div className="day-of-week-container">
-      //             <h3>Saturday</h3>
-      //           </div>
-      //           <table>
-      //             <tbody>
-      //               <tr>
-      //                 <th>Exercise</th>
-      //                 <th>Sets</th>
-      //                 <th>Reps</th>
-      //                 <th>Weight</th>
-      //               </tr>
-      //               {satArr.map((el, index) => el)}
-      //             </tbody>
-      //           </table>
-      //         </div>
-      //       )
-      //       break;
-      //     case '6':
-      //       let sunArr = []
-      //       for(let x = 1; x <= Object.keys(data[`Week_${i}`]['days'][6]).length; x++) {
-      //         let day = data[`Week_${i}`]['days'][6][x]
-      //         sunArr.push(
-      //           <tr>
-      //             <td>{day.exercise}</td>
-      //             <td>{day.sets}</td>
-      //             <td>{day.reps}</td>
-      //             <td>{day.weight}</td>
-      //           </tr>
-      //         )
-      //       }
-      //       arr.push(
-      //         <div className="current-day-container">
-      //           <div className="day-of-week-container">
-      //             <h3>Sunday</h3>
-      //           </div>
-      //           <table>
-      //             <tbody>
-      //               <tr>
-      //                 <th>Exercise</th>
-      //                 <th>Sets</th>
-      //                 <th>Reps</th>
-      //                 <th>Weight</th>
-      //               </tr>
-      //               {sunArr.map((el, index) => el)}
-      //             </tbody>
-      //           </table>
-      //         </div>
-      //       )
-            
-      //       break;
-      //     default:
-      //       let unkArr = []
-      //       for(let x = 1; x <= Object.keys(data[`Week_${i}`]['days']['undefined']).length; x++) {
-      //         let day = data[`Week_${i}`]['days']['undefined'][x]
-      //         unkArr.push(
-      //           <div className='show-workout'>
-      //             <p>{day.exercise}</p>
-      //             <p>{day.sets}</p>
-      //             <p>{day.reps}</p>
-      //             <p>{day.weight}</p>
-      //           </div>
-      //         )
-      //       }
-      //       arr.push(
-      //         <div className="current-day-container">
-      //           <div className="day-of-week-container">
-      //             <h3>Unknown Day (what)</h3>
-      //           </div>
-      //           <table>
-      //             <tbody>
-      //               <tr>
-      //                 <th>Exercise</th>
-      //                 <th>Sets</th>
-      //                 <th>Reps</th>
-      //                 <th>Weight</th>
-      //               </tr>
-      //               {unkArr.map((el, index) => el)}
-      //             </tbody>
-      //           </table>
-      //         </div>
-      //       )
-      //   }        
-      // }
+      arr.push (<CurrentWeek index={i} data={data}/>)
     }
     return arr
   }
@@ -307,7 +41,7 @@ function Current() {
     } else {
       return (
         <div className="program-container">
-          <h2>{name}</h2>
+          <h2>{name ? name : "Let's Workout!"}</h2>
           <RenderWorkout />
         </div>
       )
@@ -316,7 +50,6 @@ function Current() {
 
   return (
     <div>
-      {/* <h1 id="page-title">Let's Workout!</h1> */}
       <Display />
     </div>
   )
