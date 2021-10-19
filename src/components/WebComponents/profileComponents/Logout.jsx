@@ -1,5 +1,7 @@
 import React from 'react'
 
+// Pretty obvious what this component does. It allows the user to log out.
+
 function Logout() {
   function logout() {
     localStorage.removeItem('user')

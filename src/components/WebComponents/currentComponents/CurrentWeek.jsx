@@ -1,26 +1,32 @@
-import React, {useState} from 'react'
-import { Collapse } from 'react-collapse'
-import CurrentDay from './CurrentDay'
+import React, { useState } from "react";
+import { Collapse } from "react-collapse";
+import CurrentDay from "./CurrentDay";
+
+// This component is taking the data we passed down and creating all of the days that exist within the week component. We then put those inside a collapse container.
 
 function CurrentWeek(props) {
   const [isActive, setActive] = useState(false);
-  let i = props.index
-  let data = props.data
-  console.log("week:", props.data)
-  const ArrowDirection = () => isActive ? <i className='bx bxs-down-arrow' ></i> : <i className='bx bxs-right-arrow'></i>
+  let i = props.index;
+  let data = props.data;
+  console.log("week:", props.data);
+  const ArrowDirection = () =>
+    isActive ? (
+      <i className="bx bxs-down-arrow"></i>
+    ) : (
+      <i className="bx bxs-right-arrow"></i>
+    );
 
   const Display = () => {
-    let arr = []
-    for (let j = 0; j < Object.keys(data[`Week_${i}`]['days']).length; j++) {
-      arr.push(<CurrentDay data={props.data} index={props.index} j={j}/>)
+    let arr = [];
+    for (let j = 0; j < Object.keys(data[`Week_${i}`]["days"]).length; j++) {
+      arr.push(<CurrentDay data={props.data} index={props.index} j={j} />);
     }
-    return arr
-  }
-  
+    return arr;
+  };
 
   return (
     <div className="collapse-container">
-      <div className='week-container' onClick={() => setActive(!isActive)}>
+      <div className="week-container" onClick={() => setActive(!isActive)}>
         <ArrowDirection />
         <h2>Week {props.index}</h2>
       </div>
@@ -28,8 +34,7 @@ function CurrentWeek(props) {
         <Display />
       </Collapse>
     </div>
-    
-  )
+  );
 }
 
-export default CurrentWeek
+export default CurrentWeek;
