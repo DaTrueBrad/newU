@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import swal from 'sweetalert'
 
+// this is where a lot of the manipulation of the data is done, as we pass the data down into this component and then organize it into the actual card.
+
 function CustomCard(props) {
   const [hide, setHide] = useState(false)
 

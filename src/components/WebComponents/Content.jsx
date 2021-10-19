@@ -9,6 +9,8 @@ import Favorites from './favoriteComponents/Favorites'
 import Programs from './programComponents/Programs'
 import Footer from './Footer'
 
+// This is a router for everything the user sees once they are logged in. It checks to see if the user has proper authentication to be here, and if so, it will let them continue. If not, well they get prompted to go back to the landing page and log in.
+
 function Content(props) {
    if (props.status) {
     return (

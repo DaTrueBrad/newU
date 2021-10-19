@@ -3,6 +3,8 @@ import React, {useEffect, useState} from 'react'
 import Spinner from '../../Spinner'
 import CustomCard from './CustomCard'
 
+// This component will get data from the database and then use it to create cards for each workout program.
+
 let res = {}
 
 function Custom() {

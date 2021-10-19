@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
 
+// The header is the navigation bar for desktop devices.
+
 
 function Header(props) {
   const [isActive, setActive] = useState("true");

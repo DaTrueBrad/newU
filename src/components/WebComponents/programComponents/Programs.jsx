@@ -4,6 +4,8 @@ import Current from '../currentComponents/Current'
 import Custom from './Custom'
 import Templates from './Templates'
 
+// This page is acting as a router for the other pages.
+
 function Programs() {
   return (
     <div>
