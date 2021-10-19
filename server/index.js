@@ -27,6 +27,7 @@ app.get('/workouts', wCtrl.getCurrent)
 app.delete('/deleteWorkout', wCtrl.deleteWorkout)
 app.get('/myworkouts', wCtrl.getMyWorkouts)
 app.post('/currentworkout', wCtrl.selectCurrent)
+app.get('/templates', wCtrl.getTemplates)
 
 // article endpoints
 app.get("/article", aCtrl.getArticles);
